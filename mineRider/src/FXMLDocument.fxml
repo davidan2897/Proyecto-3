@@ -13,10 +13,11 @@
          <content>
             <AnchorPane fx:id="anchorCountainerMap" prefHeight="580.0" prefWidth="648.0" styleClass="body" stylesheets="@style.css">
                <children>
-                  <GridPane fx:id="gridCountainer" layoutX="66.0" layoutY="22.0">
+                  <GridPane fx:id="gridCountainer" layoutX="109.0" layoutY="63.0">
                     <columnConstraints>
+                      <ColumnConstraints />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -27,6 +28,7 @@
                </children>
             </AnchorPane>
          </content></ScrollPane>
-      <Button fx:id="button" layoutX="754.0" layoutY="612.0" mnemonicParsing="false" onAction="#handleButtonaApply" prefHeight="33.0" prefWidth="68.0" text="Button" />
+      <Button fx:id="button" layoutX="754.0" layoutY="612.0" mnemonicParsing="false" onAction="#mover" prefHeight="33.0" prefWidth="68.0" text="Button" />
+      <Button layoutX="754.0" layoutY="560.0" mnemonicParsing="false" onAction="#moverDerecha" text="Button" />
    </children>
 </AnchorPane>
