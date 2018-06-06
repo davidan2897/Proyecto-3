@@ -18,8 +18,9 @@ public class Personaje implements Runnable{
     private int posicion;
     private int alcance;
     private String direccion;
+    private String url;
 
-    public Personaje(String nombre, int vida, int pala, int latigo, int espada, int posicion, int alcance, String direccion) {
+    public Personaje(String nombre, int vida, int pala, int latigo, int espada, int posicion, int alcance, String direccion,String url) {
         this.nombre = nombre;
         this.vida = vida;
         this.pala = pala;
@@ -28,10 +29,19 @@ public class Personaje implements Runnable{
         this.posicion = posicion;
         this.alcance = alcance;
         this.direccion = direccion;
+        this.url=url;
     }
 
     public String getDireccion() {
         return direccion;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setDireccion(String direccion) {

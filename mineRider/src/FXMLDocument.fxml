@@ -13,7 +13,7 @@
          <content>
             <AnchorPane fx:id="anchorCountainerMap" prefHeight="580.0" prefWidth="648.0" styleClass="body" stylesheets="@style.css">
                <children>
-                  <GridPane fx:id="gridCountainer" layoutX="109.0" layoutY="63.0">
+                  <GridPane fx:id="gridCountainer" layoutX="109.0" layoutY="63.0" prefHeight="110.0" prefWidth="216.0">
                     <columnConstraints>
                       <ColumnConstraints />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,7 +28,10 @@
                </children>
             </AnchorPane>
          </content></ScrollPane>
-      <Button fx:id="button" layoutX="754.0" layoutY="612.0" mnemonicParsing="false" onAction="#mover" prefHeight="33.0" prefWidth="68.0" text="Button" />
-      <Button layoutX="754.0" layoutY="560.0" mnemonicParsing="false" onAction="#moverDerecha" text="Button" />
+      <Button fx:id="button" layoutX="754.0" layoutY="643.0" mnemonicParsing="false" onAction="#Comenzar" prefHeight="33.0" prefWidth="68.0" text="Button" />
+      <Button layoutX="798.0" layoutY="553.0" mnemonicParsing="false" onAction="#moverDerecha" text="--&gt;" />
+      <Button layoutX="730.0" layoutY="553.0" mnemonicParsing="false" onAction="#moverIzquierda" text="&lt;--" />
+      <Button layoutX="764.0" layoutY="518.0" mnemonicParsing="false" onAction="#moverArriba" prefHeight="25.0" prefWidth="34.0" text="up" />
+      <Button layoutX="758.0" layoutY="593.0" mnemonicParsing="false" onAction="#moveraAbajo" text="down" />
    </children>
 </AnchorPane>
