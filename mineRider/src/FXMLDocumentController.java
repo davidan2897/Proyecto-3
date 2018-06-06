@@ -1,5 +1,6 @@
 
 import Domain.Archivos;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -46,6 +47,7 @@ Image i4 = new Image("Imagenes/ash5.png");
          imagenPersonaje.setFitWidth(50);
         imagenPersonaje.setLayoutX(200);
         imagenPersonaje.setLayoutY(290);
+        
    
     }
     public void moverDerecha(ActionEvent event){
@@ -59,6 +61,7 @@ Image i4 = new Image("Imagenes/ash5.png");
          
           transitionPersonaje.play(); 
          posX+=65;
+   
       
     }
         public void moverIzquierda(ActionEvent event){
@@ -101,7 +104,23 @@ Image i4 = new Image("Imagenes/ash5.png");
       
     }
     
-    
+       public void moveIt(KeyEvent evt) {
+     switch (evt.getKeyCode()) {
+            case KeyEvent.VK_DOWN:
+               // myY += 5;
+                break;
+            case KeyEvent.VK_UP:
+               // myY -= 5;
+                break;
+            case KeyEvent.VK_LEFT:
+               // myX -= 5;
+                break;
+            case KeyEvent.VK_RIGHT:
+               // myX += 5;
+                System.out.println("hola");
+                break;
+        }
+   }
     
     
     public void jason(ActionEvent event) {
