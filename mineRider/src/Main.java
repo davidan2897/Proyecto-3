@@ -29,7 +29,7 @@ public class Main extends Application {
         stage.setScene(scene);
         String icon="Imagenes/logo.jpg";
         stage.getIcons().add(new Image(icon ));
-        stage.setTitle("Armacabezas");
+        stage.setTitle("MineRider");
         stage.show();
     }
 

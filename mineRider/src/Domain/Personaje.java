@@ -19,8 +19,10 @@ public class Personaje implements Runnable{
     private int alcance;
     private String direccion;
     private String url;
+    public Cueva cueva;
 
-    public Personaje(String nombre, int vida, int pala, int latigo, int espada, int posicion, int alcance, String direccion,String url) {
+
+    public Personaje(String nombre, int vida, int pala, int latigo, int espada, int posicion, int alcance, String direccion,String url,Cueva cueva) {
         this.nombre = nombre;
         this.vida = vida;
         this.pala = pala;
@@ -30,6 +32,11 @@ public class Personaje implements Runnable{
         this.alcance = alcance;
         this.direccion = direccion;
         this.url=url;
+        this.cueva = cueva;
+    }
+
+    Personaje(String castigador, int i, int i0, int i1, int i2, int i3, int i4, String direccion, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getDireccion() {

@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="701.0" prefWidth="878.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="701.0" prefWidth="878.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentController">
    <children>
       <ScrollPane fx:id="scrollPaneMapa" hbarPolicy="ALWAYS" layoutX="31.0" layoutY="80.0" prefHeight="603.0" prefWidth="674.0" vbarPolicy="ALWAYS">
          <content>
-            <AnchorPane fx:id="anchorCountainerMap" prefHeight="580.0" prefWidth="648.0" styleClass="body" stylesheets="@style.css">
+            <AnchorPane fx:id="anchorCountainerMap" prefHeight="578.0" prefWidth="653.0" styleClass="body" stylesheets="@style.css">
                <children>
                   <GridPane fx:id="gridCountainer" layoutX="109.0" layoutY="63.0" prefHeight="110.0" prefWidth="216.0">
                     <columnConstraints>
@@ -28,10 +28,7 @@
                </children>
             </AnchorPane>
          </content></ScrollPane>
-      <Button fx:id="button" layoutX="754.0" layoutY="643.0" mnemonicParsing="false" onAction="#Comenzar" prefHeight="33.0" prefWidth="68.0" text="Button" />
-      <Button layoutX="798.0" layoutY="553.0" mnemonicParsing="false" onAction="#moverDerecha" text="--&gt;" />
-      <Button layoutX="730.0" layoutY="553.0" mnemonicParsing="false" onAction="#moverIzquierda" text="&lt;--" />
-      <Button layoutX="764.0" layoutY="518.0" mnemonicParsing="false" onAction="#moverArriba" prefHeight="25.0" prefWidth="34.0" text="up" />
-      <Button layoutX="758.0" layoutY="593.0" mnemonicParsing="false" onAction="#moveraAbajo" text="down" />
+      <Button fx:id="button" layoutX="741.0" layoutY="553.0" mnemonicParsing="false" onAction="#Comenzar" prefHeight="33.0" prefWidth="82.0" text="Comenzar" />
+      <Button layoutX="707.0" layoutY="654.0" mnemonicParsing="false" style="-fx-background-color: #000000;" />
    </children>
 </AnchorPane>

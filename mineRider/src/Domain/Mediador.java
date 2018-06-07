@@ -11,4 +11,16 @@ package Domain;
  */
 public class Mediador {
     
+ Cueva cueva = new Cueva(655, 575, "Plana");
+ 
+ 
+    
+ public void dd (){
+
+Personaje personaje = new Personaje("", 0, 0, 0, 0, 0, 0, "","", cueva);     
+  personaje.run();
+     
+     
+ }
+    
 }
