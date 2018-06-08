@@ -1,5 +1,6 @@
 
 import Domain.Archivos;
+import Domain.Teclado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
@@ -10,9 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
-import java.awt.event.KeyEvent;
 
 /**
  *
@@ -31,8 +30,7 @@ public class FXMLDocumentController implements Initializable {
     Image i2 = new Image("Imagenes/ash3.png");
     Image i3 = new Image("Imagenes/ash2.png");
     Image i4 = new Image("Imagenes/ash5.png");
-    @FXML
-    private GridPane gridCountainer;
+
     @FXML
     private AnchorPane anchor;
     @FXML
@@ -40,68 +38,31 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button button;
 
-    private KeyEvent evt;
-
-    public void cuaquier() {
+    
+    public void teclas() {
+        Teclado teclado = new Teclado();
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                    if (posY > -240) {
-                        imagenPersonaje.setImage(i3);
-                        TranslateTransition transitionPersonaje;
-                        transitionPersonaje = new TranslateTransition();
-                        transitionPersonaje.setDuration(Duration.seconds(1));
-
-                        transitionPersonaje.setToY(posY - 60);
-                        transitionPersonaje.setNode(imagenPersonaje);
-
-                        transitionPersonaje.play();
-                        posY -= 60;
-                    }
+                    teclado.moverArriba(posY, i3, imagenPersonaje);
+                    if(posY>=-180)
+                    posY-=60;
                     break;
                 case DOWN:
-                    if (posY < 180) {
-
-                        imagenPersonaje.setImage(i4);
-                        TranslateTransition transitionPersonaje;
-                        transitionPersonaje = new TranslateTransition();
-                        transitionPersonaje.setDuration(Duration.seconds(1));
-
-                        transitionPersonaje.setToY(posY + 60);
-                        transitionPersonaje.setNode(imagenPersonaje);
-
-                        transitionPersonaje.play();
-                        posY += 60;
-                    }
+                   teclado.moveraAbajo(posY, i4, imagenPersonaje);
+                   if(posY<=120)
+                    posY+=60;
                     break;
                 case LEFT:
-                    if (posX > -260) {
-                        imagenPersonaje.setImage(i);
-                        TranslateTransition transitionPersonaje;
-                        transitionPersonaje = new TranslateTransition();
-                        transitionPersonaje.setDuration(Duration.seconds(1));
-
-                        transitionPersonaje.setToX(posX - 65);
-                        transitionPersonaje.setNode(imagenPersonaje);
-
-                        transitionPersonaje.play();
-                        posX -= 65;
-                    }
+                    teclado.moverIzquierda(posX, i, imagenPersonaje);
+                     if(posX>-260)
+                    posX-=65;
                     break;
                 case RIGHT:
-                    if (posX < 195) {
-                        imagenPersonaje.setImage(i2);
-                        TranslateTransition transitionPersonaje;
-                        transitionPersonaje = new TranslateTransition();
-                        transitionPersonaje.setDuration(Duration.seconds(1));
-
-                        transitionPersonaje.setToX(65 + posX);
-                        transitionPersonaje.setNode(imagenPersonaje);
-
-                        transitionPersonaje.play();
-                        posX += 65;
-                    }
-
+                   
+                 teclado.moverDerecha(posX, i2, imagenPersonaje);
+                 if(posX<195)
+                posX+=65;
                     break;
             }
 
@@ -130,7 +91,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cuaquier();
+        teclas();
 
     }
 
