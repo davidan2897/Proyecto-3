@@ -15,12 +15,7 @@ public class Mediador {
  
  
     
- public void dd (){
-
-Personaje personaje = new Personaje("", 0, 0, 0, 0, 0, 0, "","", cueva);     
-  personaje.run();
-     
-     
- }
+ 
+  
     
 }

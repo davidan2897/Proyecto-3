@@ -1,9 +1,11 @@
 
-import Domain.Archivos;
+import Domain.Auxiliar;
+import Domain.Cueva;
+import Domain.Mediador;
+import Domain.Personaje;
 import Domain.Teclado;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,26 +13,31 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 /**
  *
  * @author David
  */
 public class FXMLDocumentController implements Initializable {
-
+    Auxiliar auxiliar = new Auxiliar();
    
 
     int posX = 0;
     int posY = 0;
+     Cueva cueva = new Cueva(655, 575, "Plana");
 
+    
     ImageView imagenPersonaje = new ImageView("Imagenes/ash5.png");
     ImageView imagenZombie = new ImageView("Imagenes/Zombie.png");
-    Image i = new Image("Imagenes/ash4.png");
-    Image i2 = new Image("Imagenes/ash3.png");
-    Image i3 = new Image("Imagenes/ash2.png");
-    Image i4 = new Image("Imagenes/ash5.png");
-
+    Image ImagenPersonajeIzquierda = new Image("Imagenes/ash4.png");
+    Image ImagenPersonajeDerecha = new Image("Imagenes/ash3.png");
+    Image ImagenPersonajeArriba = new Image("Imagenes/ash2.png");
+    Image ImagenPersonajeAbajo = new Image("Imagenes/ash5.png");
+    Image ImagenPersonajePalaDerecha = new Image("Imagenes/pala.jpg");
+    Image ImagenPersonajePalaIzquierda = new Image("Imagenes/palaDerecha.jpg");
+    Personaje personaje = new Personaje("Heroe", 100, 5000, 5, 10, 0, 1,"derecha", ImagenPersonajeArriba, cueva);
+    
+    
     @FXML
     private AnchorPane anchor;
     @FXML
@@ -39,60 +46,68 @@ public class FXMLDocumentController implements Initializable {
     private Button button;
 
     
+    //movimiento Personaje
     public void teclas() {
         Teclado teclado = new Teclado();
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                    teclado.moverArriba(posY, i3, imagenPersonaje);
+                    personaje.setDireccion("arriba");
+                    personaje.setUrl(ImagenPersonajeArriba);
+                    imagenPersonaje.setImage(personaje.getUrl());
+                    teclado.moverArriba(posY, imagenPersonaje);
+                    
                     if(posY>=-180)
                     posY-=60;
                     break;
                 case DOWN:
-                   teclado.moveraAbajo(posY, i4, imagenPersonaje);
+                    personaje.setDireccion("abajo");
+                    personaje.setUrl(ImagenPersonajeAbajo);
+                    imagenPersonaje.setImage(personaje.getUrl());
+                   teclado.moveraAbajo(posY, imagenPersonaje);
                    if(posY<=120)
                     posY+=60;
                     break;
                 case LEFT:
-                    teclado.moverIzquierda(posX, i, imagenPersonaje);
+                     personaje.setDireccion("izquierda");
+                   personaje.setUrl(ImagenPersonajeIzquierda);
+                   imagenPersonaje.setImage(personaje.getUrl());
+                    teclado.moverIzquierda(posX, imagenPersonaje);
                      if(posX>-260)
                     posX-=65;
                     break;
                 case RIGHT:
-                   
-                 teclado.moverDerecha(posX, i2, imagenPersonaje);
+                 personaje.setDireccion("derecha");
+                 personaje.setUrl(ImagenPersonajeDerecha);
+                 imagenPersonaje.setImage(personaje.getUrl());
+                 teclado.moverDerecha(posX, imagenPersonaje);
                  if(posX<195)
                 posX+=65;
                     break;
+                case S:
+                 if(personaje.getDireccion().equalsIgnoreCase("Derecha"))   
+                imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
+                if( personaje.getDireccion().equalsIgnoreCase("izquierda"))
+                imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
+                  break;  
             }
 
         });
 
     }
-
+ //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
 
         anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie);
-        imagenPersonaje.setFitHeight(50);
-        imagenPersonaje.setFitWidth(50);
-        imagenZombie.setFitHeight(50);
-        imagenZombie.setFitWidth(50);
-        imagenPersonaje.setLayoutX(330);
-        imagenPersonaje.setLayoutY(290);
-        imagenZombie.setLayoutX(520);
-        imagenZombie.setLayoutY(240);
+        auxiliar.PosicionInicial(imagenPersonaje, imagenZombie);
         button.setDisable(true);
     }
 
-    public void jason(ActionEvent event) {
-        Archivos ar = new Archivos();
-        ar.EscribirJson();
-    }
-
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-
+        
     }
 
 }
