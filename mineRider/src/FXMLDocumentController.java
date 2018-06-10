@@ -1,9 +1,9 @@
 
 import Domain.Auxiliar;
 import Domain.Cueva;
-import Domain.Mediador;
 import Domain.Personaje;
 import Domain.Teclado;
+import Domain.Zombie;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -29,12 +29,14 @@ public class FXMLDocumentController implements Initializable {
     
     ImageView imagenPersonaje = new ImageView("Imagenes/ash5.png");
     ImageView imagenZombie = new ImageView("Imagenes/Zombie.png");
+    ImageView imagenRocas = new ImageView("Imagenes/images.jpg");
     Image ImagenPersonajeIzquierda = new Image("Imagenes/ash4.png");
     Image ImagenPersonajeDerecha = new Image("Imagenes/ash3.png");
     Image ImagenPersonajeArriba = new Image("Imagenes/ash2.png");
     Image ImagenPersonajeAbajo = new Image("Imagenes/ash5.png");
     Image ImagenPersonajePalaDerecha = new Image("Imagenes/pala.jpg");
     Image ImagenPersonajePalaIzquierda = new Image("Imagenes/palaDerecha.jpg");
+    
     Personaje personaje = new Personaje("Heroe", 100, 5000, 5, 10, 0, 1,"derecha", ImagenPersonajeArriba, cueva);
     
     
@@ -85,10 +87,16 @@ public class FXMLDocumentController implements Initializable {
                 posX+=65;
                     break;
                 case S:
-                 if(personaje.getDireccion().equalsIgnoreCase("Derecha"))   
+                 if(personaje.getDireccion().equalsIgnoreCase("Derecha")) {  
                 imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
-                if( personaje.getDireccion().equalsIgnoreCase("izquierda"))
+                anchorCountainerMap.getChildren().clear();
+                anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie);
+                 }
+                if( personaje.getDireccion().equalsIgnoreCase("izquierda")){
                 imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
+                anchorCountainerMap.getChildren().clear();
+                anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie);
+                }
                   break;  
             }
 
@@ -97,17 +105,21 @@ public class FXMLDocumentController implements Initializable {
     }
  //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-
-        anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie);
-        auxiliar.PosicionInicial(imagenPersonaje, imagenZombie);
+         
+        anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie,imagenRocas);
+        auxiliar.PosicionInicial(imagenPersonaje, imagenZombie,imagenRocas);
         button.setDisable(true);
+      
+        
+        
     }
 
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-        
+        Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1,"",imagenZombie);
+        zombie.run();
     }
 
 }

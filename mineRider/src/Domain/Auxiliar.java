@@ -13,8 +13,8 @@ import javafx.scene.image.ImageView;
  */
 public class Auxiliar {
   
-public void PosicionInicial(ImageView imagenPersonaje, ImageView imagenZombie){
-      imagenPersonaje.setFitHeight(50);
+public void PosicionInicial(ImageView imagenPersonaje, ImageView imagenZombie,ImageView ImagenRocas){
+        imagenPersonaje.setFitHeight(50);
         imagenPersonaje.setFitWidth(50);
         imagenZombie.setFitHeight(50);
         imagenZombie.setFitWidth(50);
@@ -22,7 +22,11 @@ public void PosicionInicial(ImageView imagenPersonaje, ImageView imagenZombie){
         imagenPersonaje.setLayoutY(290);
         imagenZombie.setLayoutX(520);
         imagenZombie.setLayoutY(240); 
-    
+        ImagenRocas.setFitHeight(50);
+        ImagenRocas.setFitWidth(50);
+        ImagenRocas.setLayoutX(400);
+        ImagenRocas.setLayoutY(175); 
+        
     
 }    
 }

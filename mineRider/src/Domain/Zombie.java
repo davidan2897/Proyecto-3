@@ -5,6 +5,12 @@
  */
 package Domain;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
 /**
  *
  * @author David
@@ -18,7 +24,7 @@ public class Zombie implements Runnable{
    private double retraso;
    private int alcance;
    private String direccion;
-
+   private ImageView imagen;
     public String getDireccion() {
         return direccion;
     }
@@ -27,7 +33,15 @@ public class Zombie implements Runnable{
         this.direccion = direccion;
     }
 
-    public Zombie(String nombre, int posicion, int ataque, int defensa, double retraso, int alcance, String direccion) {
+    public ImageView getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(ImageView imagen) {
+        this.imagen = imagen;
+    }
+
+    public Zombie(String nombre, int posicion, int ataque, int defensa, double retraso, int alcance, String direccion, ImageView imagen) {
         this.nombre = nombre;
         this.posicion = posicion;
         this.ataque = ataque;
@@ -35,7 +49,11 @@ public class Zombie implements Runnable{
         this.retraso = retraso;
         this.alcance = alcance;
         this.direccion = direccion;
+        this.imagen = imagen;
     }
+
+ 
+    
 
     public String getNombre() {
         return nombre;
@@ -96,6 +114,23 @@ public class Zombie implements Runnable{
 
     @Override
     public void run() {
+        for (int i = 0; i < 10; i++) {
+            
+        
+         TranslateTransition transitionPersonaje = new TranslateTransition();   
+          transitionPersonaje.setDuration(Duration.seconds(2));
+
+        transitionPersonaje.setToX(-65);
+         transitionPersonaje.setNode(imagen);
+         
+         transitionPersonaje.setAutoReverse(true);
+         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
+         transitionPersonaje.play();
+        }
+//          
+        
+  
+        
         
     }
     
