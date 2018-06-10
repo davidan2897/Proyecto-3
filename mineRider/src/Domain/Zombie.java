@@ -114,18 +114,22 @@ public class Zombie implements Runnable{
 
     @Override
     public void run() {
+        int posicionZ =0;
         for (int i = 0; i < 10; i++) {
             
         
-         TranslateTransition transitionPersonaje = new TranslateTransition();   
-          transitionPersonaje.setDuration(Duration.seconds(2));
-
-        transitionPersonaje.setToX(-65);
+         TranslateTransition transitionPersonaje = new TranslateTransition(); 
+           if(posicionZ>-260 || posicionZ<195){
+          transitionPersonaje.setDuration(Duration.seconds(20));
+       
+        transitionPersonaje.setToX(posicionZ-65);
          transitionPersonaje.setNode(imagen);
          
          transitionPersonaje.setAutoReverse(true);
          transitionPersonaje.setCycleCount(Animation.INDEFINITE);
          transitionPersonaje.play();
+         posicionZ-=65;
+           }
         }
 //          
         

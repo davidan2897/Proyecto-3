@@ -119,7 +119,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1,"",imagenZombie);
-        zombie.run();
+      zombie.run();
     }
-
+ 
 }
