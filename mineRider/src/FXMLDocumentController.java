@@ -13,22 +13,21 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
+
     Auxiliar auxiliar = new Auxiliar();
-   
 
     int posX = 0;
     int posY = 0;
-     Cueva cueva = new Cueva(655, 575, "Plana");
+    Cueva cueva = new Cueva(655, 575, "Plana");
 
-    
     ImageView imagenPersonaje = new ImageView("Imagenes/ash5.png");
-    ImageView imagenZombie = new ImageView("Imagenes/Zombie.png");
     ImageView imagenRocas = new ImageView("Imagenes/images.jpg");
     Image ImagenPersonajeIzquierda = new Image("Imagenes/ash4.png");
     Image ImagenPersonajeDerecha = new Image("Imagenes/ash3.png");
@@ -36,10 +35,9 @@ public class FXMLDocumentController implements Initializable {
     Image ImagenPersonajeAbajo = new Image("Imagenes/ash5.png");
     Image ImagenPersonajePalaDerecha = new Image("Imagenes/pala.jpg");
     Image ImagenPersonajePalaIzquierda = new Image("Imagenes/palaDerecha.jpg");
-    
-    Personaje personaje = new Personaje("Heroe", 100, 5000, 5, 10, 0, 1,"derecha", ImagenPersonajeArriba, cueva);
-    
-    
+
+    Personaje personaje = new Personaje("Heroe", 100, 5000, 5, 10, 0, 1, "derecha", ImagenPersonajeArriba, cueva);
+
     @FXML
     private AnchorPane anchor;
     @FXML
@@ -47,7 +45,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button button;
 
-    
     //movimiento Personaje
     public void teclas() {
         Teclado teclado = new Teclado();
@@ -58,68 +55,72 @@ public class FXMLDocumentController implements Initializable {
                     personaje.setUrl(ImagenPersonajeArriba);
                     imagenPersonaje.setImage(personaje.getUrl());
                     teclado.moverArriba(posY, imagenPersonaje);
-                    
-                    if(posY>=-180)
-                    posY-=60;
+
+                    if (posY >= -180) {
+                        posY -= 60;
+                    }
                     break;
                 case DOWN:
                     personaje.setDireccion("abajo");
                     personaje.setUrl(ImagenPersonajeAbajo);
                     imagenPersonaje.setImage(personaje.getUrl());
-                   teclado.moveraAbajo(posY, imagenPersonaje);
-                   if(posY<=120)
-                    posY+=60;
+                    teclado.moveraAbajo(posY, imagenPersonaje);
+                    if (posY <= 120) {
+                        posY += 60;
+                    }
                     break;
                 case LEFT:
-                     personaje.setDireccion("izquierda");
-                   personaje.setUrl(ImagenPersonajeIzquierda);
-                   imagenPersonaje.setImage(personaje.getUrl());
+                    personaje.setDireccion("izquierda");
+                    personaje.setUrl(ImagenPersonajeIzquierda);
+                    imagenPersonaje.setImage(personaje.getUrl());
                     teclado.moverIzquierda(posX, imagenPersonaje);
-                     if(posX>-260)
-                    posX-=65;
+                    if (posX > -260) {
+                        posX -= 65;
+                    }
                     break;
                 case RIGHT:
-                 personaje.setDireccion("derecha");
-                 personaje.setUrl(ImagenPersonajeDerecha);
-                 imagenPersonaje.setImage(personaje.getUrl());
-                 teclado.moverDerecha(posX, imagenPersonaje);
-                 if(posX<195)
-                posX+=65;
+                    personaje.setDireccion("derecha");
+                    personaje.setUrl(ImagenPersonajeDerecha);
+                    imagenPersonaje.setImage(personaje.getUrl());
+                    teclado.moverDerecha(posX, imagenPersonaje);
+                    if (posX < 195) {
+                        posX += 65;
+                    }
                     break;
                 case S:
-                 if(personaje.getDireccion().equalsIgnoreCase("Derecha")) {  
-                imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
-                anchorCountainerMap.getChildren().clear();
-                anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie);
-                 }
-                if( personaje.getDireccion().equalsIgnoreCase("izquierda")){
-                imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
-                anchorCountainerMap.getChildren().clear();
-                anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie);
-                }
-                  break;  
+                    if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
+                        imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
+                        anchorCountainerMap.getChildren().clear();
+                        anchorCountainerMap.getChildren().addAll(imagenPersonaje);
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
+                        imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
+                        anchorCountainerMap.getChildren().clear();
+                        anchorCountainerMap.getChildren().addAll(imagenPersonaje);
+                    }
+                    break;
             }
 
         });
 
     }
- //Posiciones iniciales
+    //Posiciones iniciales
+
     public void Comenzar(ActionEvent event) {
-         
-        anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenZombie,imagenRocas);
-        auxiliar.PosicionInicial(imagenPersonaje, imagenZombie,imagenRocas);
+
+        anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenRocas);
+        auxiliar.PosicionInicial(imagenPersonaje, imagenRocas);
         button.setDisable(true);
-      
         
+        for (int i = 0; i < 3; i++) {
+            anchorCountainerMap.getChildren().add(auxiliar.crearZombie());
+        }
         
     }
 
-  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-        Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1,"",imagenZombie);
-      zombie.run();
     }
- 
+
 }
