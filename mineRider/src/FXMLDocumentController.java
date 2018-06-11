@@ -10,9 +10,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +46,10 @@ public class FXMLDocumentController implements Initializable {
     private AnchorPane anchorCountainerMap;
     @FXML
     private Button button;
+    @FXML
+    private GridPane gridCountainer;
+    @FXML
+    private ScrollPane scrollPricnipal;
 
     //movimiento Personaje
     public void teclas() {
@@ -51,40 +57,53 @@ public class FXMLDocumentController implements Initializable {
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
+                    double posicionV;
+                    posicionV = scrollPricnipal.getVvalue();
+                    scrollPricnipal.setVvalue(posicionV-0.1);
                     personaje.setDireccion("arriba");
                     personaje.setUrl(ImagenPersonajeArriba);
                     imagenPersonaje.setImage(personaje.getUrl());
                     teclado.moverArriba(posY, imagenPersonaje);
+                    
 
                     if (posY >= -180) {
-                        posY -= 60;
+                        posY -= 50;
                     }
                     break;
                 case DOWN:
+                    
+                    posicionV = scrollPricnipal.getVvalue();
+                    scrollPricnipal.setVvalue(posicionV+0.1);
                     personaje.setDireccion("abajo");
                     personaje.setUrl(ImagenPersonajeAbajo);
                     imagenPersonaje.setImage(personaje.getUrl());
                     teclado.moveraAbajo(posY, imagenPersonaje);
                     if (posY <= 120) {
-                        posY += 60;
+                        posY += 50;
                     }
                     break;
                 case LEFT:
+                    double posicionH;
+                    posicionH = scrollPricnipal.getHvalue();
+                    scrollPricnipal.setHvalue(posicionH-0.1);
                     personaje.setDireccion("izquierda");
                     personaje.setUrl(ImagenPersonajeIzquierda);
                     imagenPersonaje.setImage(personaje.getUrl());
                     teclado.moverIzquierda(posX, imagenPersonaje);
                     if (posX > -260) {
-                        posX -= 65;
+                        posX -= 50;
                     }
                     break;
                 case RIGHT:
+                     
+                     posicionH = scrollPricnipal.getHvalue();
+                    scrollPricnipal.setHvalue(posicionH+0.1);
                     personaje.setDireccion("derecha");
                     personaje.setUrl(ImagenPersonajeDerecha);
                     imagenPersonaje.setImage(personaje.getUrl());
                     teclado.moverDerecha(posX, imagenPersonaje);
                     if (posX < 195) {
-                        posX += 65;
+                        posX += 50;
                     }
                     break;
                 case S:
@@ -104,23 +123,36 @@ public class FXMLDocumentController implements Initializable {
         });
 
     }
+     
     //Posiciones iniciales
 
     public void Comenzar(ActionEvent event) {
-
+   ImageView [][] ImagesMatriz = new ImageView[20][20];
+                for (int r = 0; r < 20; r++) {
+                    for (int c = 0; c <20; c++) {
+                        ImageView imageViewControladorImagenes =  new ImageView("Imagenes/floor.jpg");
+                        imageViewControladorImagenes.setFitHeight(50);
+                         imageViewControladorImagenes.setFitWidth(50);
+                           ImagesMatriz[c][r] = imageViewControladorImagenes;
+                              gridCountainer.add(ImagesMatriz[c][r], c, r);
+                    }
+                }
+                gridCountainer.setMinSize(20*50, 20*50);
         anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenRocas);
         auxiliar.PosicionInicial(imagenPersonaje, imagenRocas);
         button.setDisable(true);
         
+             
         for (int i = 0; i < 3; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie());
         }
-        
+     
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
+     
     }
 
 }

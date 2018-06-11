@@ -24,7 +24,7 @@ TranslateTransition transitionPersonaje;
     transitionPersonaje = new TranslateTransition();
         transitionPersonaje.setDuration(Duration.seconds(1));
 
-        transitionPersonaje.setToX(65+posX);
+        transitionPersonaje.setToX(50+posX);
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
@@ -40,7 +40,7 @@ TranslateTransition transitionPersonaje;
     transitionPersonaje = new TranslateTransition();
         transitionPersonaje.setDuration(Duration.seconds(1));
 
-        transitionPersonaje.setToX(posX-65);
+        transitionPersonaje.setToX(posX-50);
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
@@ -59,7 +59,7 @@ TranslateTransition transitionPersonaje;
     transitionPersonaje = new TranslateTransition();
         transitionPersonaje.setDuration(Duration.seconds(1));
 
-        transitionPersonaje.setToY(posY-60);
+        transitionPersonaje.setToY(posY-50);
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
@@ -76,7 +76,7 @@ TranslateTransition transitionPersonaje;
     transitionPersonaje = new TranslateTransition();
         transitionPersonaje.setDuration(Duration.seconds(1));
 
-        transitionPersonaje.setToY(posY+60);
+        transitionPersonaje.setToY(posY+50);
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
