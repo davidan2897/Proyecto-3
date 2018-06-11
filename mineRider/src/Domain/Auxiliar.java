@@ -18,8 +18,8 @@ public class Auxiliar {
         imagenPersonaje.setFitHeight(50);
         imagenPersonaje.setFitWidth(50);
         MatrizEstado.getInstance().actualizarPosicion(1, 4, 4);
-        imagenPersonaje.setLayoutX(485);
-        imagenPersonaje.setLayoutY(520);
+        imagenPersonaje.setLayoutX(40);
+        imagenPersonaje.setLayoutY(70);
         ImagenRocas.setFitHeight(50);
         ImagenRocas.setFitWidth(50);
         MatrizEstado.getInstance().actualizarPosicion(3, 0, 0);
