@@ -32,7 +32,7 @@ public ArrayList leerJson(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp\\Proyecto-3\\mineRider\\prueba.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\prueba.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 

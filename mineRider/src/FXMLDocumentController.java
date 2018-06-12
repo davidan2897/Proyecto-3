@@ -135,13 +135,13 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-             Archivos archivo=new Archivos();
-        ArrayList tamaño=archivo.leerJson();
-         int alto=Integer.parseInt((String) tamaño.get(0));
-        int ancho=Integer.parseInt((String) tamaño.get(1));
-        ImageView[][] ImagesMatriz = new ImageView[alto][ancho];
-        for (int r = 0; r < alto; r++) {
-            for (int c = 0; c < ancho; c++) {
+//             Archivos archivo=new Archivos();
+//        ArrayList tamaño=archivo.leerJson();
+//         int alto=Integer.parseInt((String) tamaño.get(0));
+//        int ancho=Integer.parseInt((String) tamaño.get(1));
+        ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
+        for (int r = 0; r < TamañoFilaCueva; r++) {
+            for (int c = 0; c < TamañoColumnaCueva; c++) {
                 ImageView imageViewControladorImagenes = new ImageView("Imagenes/floor.jpg");
 //                if(r==(int)+(Math.random()*TamañoFilaCueva) && c==(int)+(Math.random()*TamañoColumnaCueva))
 //                imageViewControladorImagenes = imagenRocas;
@@ -151,7 +151,7 @@ public class FXMLDocumentController implements Initializable {
                 gridCountainer.add(ImagesMatriz[c][r], c, r);
             }
         }
-        gridCountainer.setMinSize(alto* tamañoImagenes,  ancho* tamañoImagenes);
+        gridCountainer.setMinSize(TamañoFilaCueva* tamañoImagenes,  TamañoColumnaCueva* tamañoImagenes);
         anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenRocas);
         auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje, imagenRocas);
         button.setDisable(true);
