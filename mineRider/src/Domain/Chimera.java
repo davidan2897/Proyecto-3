@@ -5,11 +5,16 @@
  */
 package Domain;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
 /**
  *
  * @author david*/
 
-public class Chimera {
+public class Chimera implements Runnable{
   private String nombre;
    private int posicion;
    private int ataqueCorto;
@@ -18,8 +23,9 @@ public class Chimera {
    private double retraso;
    private int alcance;
    private String direccion;
-   
-     public Chimera(String nombre, int posicion, int ataqueCorto, int ataqueLargo, int defensa, double retraso, int alcance, String direccion) {
+      private ImageView imagen;
+
+    public Chimera(String nombre, int posicion, int ataqueCorto, int ataqueLargo, int defensa, double retraso, int alcance, String direccion, ImageView imagen) {
         this.nombre = nombre;
         this.posicion = posicion;
         this.ataqueCorto = ataqueCorto;
@@ -28,7 +34,10 @@ public class Chimera {
         this.retraso = retraso;
         this.alcance = alcance;
         this.direccion = direccion;
+        this.imagen = imagen;
     }
+   
+   
 
     public String getNombre() {
         return nombre;
@@ -93,5 +102,26 @@ public class Chimera {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    @Override
+    public void run() {
+        int posicionZ =0;
+        for (int i = 0; i < 2; i++) {
+            
+        
+         TranslateTransition transitionPersonaje = new TranslateTransition(); 
+          
+          transitionPersonaje.setDuration(Duration.seconds(5));
+       
+        transitionPersonaje.setToY(posicionZ);
+         transitionPersonaje.setNode(imagen);
+         
+         transitionPersonaje.setAutoReverse(true);
+         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
+         transitionPersonaje.play();
+         posicionZ-=100;
+            System.out.println(posicionZ); 
+    }
      
+}
 }

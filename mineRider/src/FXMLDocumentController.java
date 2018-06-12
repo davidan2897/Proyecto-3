@@ -24,7 +24,7 @@ public class FXMLDocumentController implements Initializable {
     Auxiliar auxiliar = new Auxiliar();
     int TamañoFilaCueva = 12;
     int TamañoColumnaCueva = 12;
-    int tamañoImagenes=100;
+    int tamañoImagenes=50;
     double tamañoDespalzamiento =0.1;
     int posX = 0;
     int posY = 0;
@@ -119,6 +119,7 @@ public class FXMLDocumentController implements Initializable {
                         imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
+                        imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
                     }
                     break;
             }
@@ -146,8 +147,9 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje, imagenRocas);
         button.setDisable(true);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 10; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes));
+            anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes));
         }
 
     }

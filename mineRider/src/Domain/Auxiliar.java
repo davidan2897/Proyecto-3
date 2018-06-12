@@ -41,10 +41,29 @@ public class Auxiliar {
         int posX = (int) +(Math.random() * 5);
         int posY = (int) +(Math.random() * 5);
 
-        imagenZombie.setLayoutX((50) +(Math.random() *1000));
-        imagenZombie.setLayoutY((50) +(Math.random() * 1000));
+        imagenZombie.setLayoutX((50) +(Math.random() *600));
+        imagenZombie.setLayoutY((50) +(Math.random() * 600));
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
         zombie.run();
         return imagenZombie;
+    }
+       public ImageView crearChimera(int tamañoImagenes) {
+        //ToDo...
+        /*
+            Falta asociar la matriz de estado con los valores de posición X, Y
+        */
+        //MatrizEstado.getInstance().actualizarPosicion(2, 3, 7);
+        ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
+        imagenChimera.setFitHeight(tamañoImagenes);
+        imagenChimera.setFitWidth(tamañoImagenes);
+        MatrizEstado.getInstance().actualizarPosicion(2, 3, 7);
+        int posX = (int) +(Math.random() * 5);
+        int posY = (int) +(Math.random() * 5);
+
+        imagenChimera.setLayoutX((50) +(Math.random() *600));
+        imagenChimera.setLayoutY((50) +(Math.random() * 600));
+        Chimera chimera = new Chimera("", posY, posY, posY, posY, posY, posY, "", imagenChimera);
+        chimera.run();
+        return imagenChimera;
     }
 }
