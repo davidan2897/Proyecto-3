@@ -13,10 +13,10 @@ import javafx.scene.image.ImageView;
  */
 public class Auxiliar {
 
-    public void PosicionInicial(ImageView imagenPersonaje, ImageView ImagenRocas) {
+    public void PosicionInicial(int tamañoImagenes,ImageView imagenPersonaje, ImageView ImagenRocas) {
         //Separar cada uno en diferentes métodos como el del zombie
-        imagenPersonaje.setFitHeight(50);
-        imagenPersonaje.setFitWidth(50);
+        imagenPersonaje.setFitHeight(tamañoImagenes);
+        imagenPersonaje.setFitWidth(tamañoImagenes);
         MatrizEstado.getInstance().actualizarPosicion(1, 4, 4);
         imagenPersonaje.setLayoutX(40);
         imagenPersonaje.setLayoutY(70);
@@ -28,21 +28,21 @@ public class Auxiliar {
         MatrizEstado.getInstance().mostrarMatrizConsola();
     }
 
-    public ImageView crearZombie() {
+    public ImageView crearZombie(int tamañoImagenes) {
         //ToDo...
         /*
             Falta asociar la matriz de estado con los valores de posición X, Y
         */
         //MatrizEstado.getInstance().actualizarPosicion(2, 3, 7);
-        ImageView imagenZombie = new ImageView("Imagenes/Zombie.png");
-        imagenZombie.setFitHeight(50);
-        imagenZombie.setFitWidth(50);
+        ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
+        imagenZombie.setFitHeight(tamañoImagenes);
+        imagenZombie.setFitWidth(tamañoImagenes);
         MatrizEstado.getInstance().actualizarPosicion(2, 3, 7);
         int posX = (int) +(Math.random() * 5);
         int posY = (int) +(Math.random() * 5);
 
-        imagenZombie.setLayoutX((int) +(Math.random() * 500));
-        imagenZombie.setLayoutY((int) +(Math.random() * 500));
+        imagenZombie.setLayoutX((50) +(Math.random() *1000));
+        imagenZombie.setLayoutY((50) +(Math.random() * 1000));
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
         zombie.run();
         return imagenZombie;
