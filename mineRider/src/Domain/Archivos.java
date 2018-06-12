@@ -6,7 +6,9 @@
 package Domain;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import javafx.event.ActionEvent;
 import org.json.simple.JSONArray;
@@ -21,30 +23,34 @@ public class Archivos {
 
 
 
-public void EscribirJson(){
 
+
+ 
+
+public ArrayList leerJson(){
+          ArrayList array=new ArrayList();
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("c:\\file.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp\\Proyecto-3\\mineRider\\prueba.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
-            String name = (String) jsonObject.get("name");
-            System.out.println(name);
+              String alto =  (String) jsonObject.get("alto");
+            System.out.println(alto);
 
-            String city = (String) jsonObject.get("city");
-            System.out.println(city);
+            String ancho = (String) jsonObject.get("ancho");
+            System.out.println(ancho);
 
-            String job = (String) jsonObject.get("job");
-            System.out.println(job);
 
-            // loop array
-            JSONArray cars = (JSONArray) jsonObject.get("cars");
-            Iterator<String> iterator = cars.iterator();
-            while (iterator.hasNext()) {
-             System.out.println(iterator.next());
-            }
+//            // loop array
+//            JSONArray cars = (JSONArray) jsonObject.get("cars");
+//            Iterator<String> iterator = cars.iterator();
+//            while (iterator.hasNext()) {
+//             System.out.println(iterator.next());
+//            }
+        array.add(alto);
+        array.add(ancho);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -52,6 +58,49 @@ public void EscribirJson(){
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        return array;
+    }
+public void escribir(){
+    JSONObject jsonObject = new JSONObject();
+
+ 
+
+        jsonObject.put("alto", 60);
+
+ 
+
+        jsonObject.put("ancho", 120);
+
+ 
+
+       
+
+ 
+
+        try {
+
+ 
+
+            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp\\Proyecto-3\\mineRider\\prueba.json");
+
+            jsonFileWriter.write(jsonObject.toJSONString());
+
+            jsonFileWriter.flush();
+
+            jsonFileWriter.close();
+
+ 
+            System.out.println(jsonObject);
+
+ 
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+ 
     }
 }
+
 
