@@ -1,9 +1,11 @@
 
+import Domain.Archivos;
 import Domain.Auxiliar;
 import Domain.Cueva;
 import Domain.Personaje;
 import Domain.Teclado;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -130,9 +132,13 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-        ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
-        for (int r = 0; r < TamañoFilaCueva; r++) {
-            for (int c = 0; c < TamañoColumnaCueva; c++) {
+             Archivos archivo=new Archivos();
+        ArrayList tamaño=archivo.leerJson();
+         int alto=Integer.parseInt((String) tamaño.get(0));
+        int ancho=Integer.parseInt((String) tamaño.get(1));
+        ImageView[][] ImagesMatriz = new ImageView[alto][ancho];
+        for (int r = 0; r < alto; r++) {
+            for (int c = 0; c < ancho; c++) {
                 ImageView imageViewControladorImagenes = new ImageView("Imagenes/floor.jpg");
 //                if(r==(int)+(Math.random()*TamañoFilaCueva) && c==(int)+(Math.random()*TamañoColumnaCueva))
 //                imageViewControladorImagenes = imagenRocas;
@@ -142,7 +148,7 @@ public class FXMLDocumentController implements Initializable {
                 gridCountainer.add(ImagesMatriz[c][r], c, r);
             }
         }
-        gridCountainer.setMinSize(TamañoFilaCueva* tamañoImagenes,  TamañoColumnaCueva* tamañoImagenes);
+        gridCountainer.setMinSize(alto* tamañoImagenes,  ancho* tamañoImagenes);
         anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenRocas);
         auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje, imagenRocas);
         button.setDisable(true);
