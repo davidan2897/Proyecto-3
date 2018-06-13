@@ -156,7 +156,7 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
         }
