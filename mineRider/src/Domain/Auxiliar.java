@@ -27,8 +27,8 @@ public class Auxiliar {
         MatrizEstado matrizEstado = new MatrizEstado();
         matrizEstado.enviarMatrizCoordenadas();
        Coordenadas matriz[][]= matrizEstado.enviaMatriz(matrizEstado.enviarMatrizCoordenadas());
-       int x = matriz[2][2].getX();
-       int y = matriz[2][2].getY();
+//       int x = matriz[2][2].getX();
+//       int y = matriz[2][2].getY();
         //ToDo...
         /*
             Falta asociar la matriz de estado con los valores de posición X, Y
@@ -37,13 +37,13 @@ public class Auxiliar {
         ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
         imagenZombie.setFitHeight(tamañoImagenes);
         imagenZombie.setFitWidth(tamañoImagenes);
-        imagenZombie.setLayoutX(x);
-        imagenZombie.setLayoutY(y);
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.println(matriz[i][j].toString());
-            }
-        }
+        imagenZombie.setLayoutX(40);
+        imagenZombie.setLayoutY(570);
+//        for (int i = 0; i < matriz.length; i++) {
+//            for (int j = 0; j < matriz[0].length; j++) {
+//                System.out.println(matriz[i][j].toString());
+//            }
+//        }
 
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
 //        zombie.run();

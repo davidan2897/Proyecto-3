@@ -33,7 +33,8 @@ public class MatrizEstado {
                     aux++;
                 }
                valores += coordenadas.toString();
-               if(j!=matriz.length-1)
+               
+// 
                    valores+=",";
 //                matriz[i][j]= coordenadas;
             }
@@ -45,35 +46,37 @@ public class MatrizEstado {
 //            valores += "\n";
           
         }
-       System.out.println(valores+"aaaa");
+       
         return valores;
     }
     public Coordenadas[][] enviaMatriz (String valores){
-         StringTokenizer sT =  new StringTokenizer(valores,",");
-    //  for(int i=0;i<valores.length();i++){
-          while(sT.hasMoreTokens()){
-       
-        int x = Integer.parseInt(sT.nextToken());
-       int y=Integer.parseInt(sT.nextToken());
-       
-          System.out.println("PASO1"+x);
-          
-          for (int j = 0; j < matriz.length; j++) {
-               System.out.println("PASO2");
-              for (int k = 0; k < matriz[0].length; k++) {
-                  
-        System.out.println(x);
-               Coordenadas c = new Coordenadas(0, 0);
-               c.setX(x);
-               c.setY(y);
-               matriz[j][k]= c;
-                   }
-              }
-              
-         // }
-        
-        
-          }
+            System.out.println(valores);
+        int aux =0;
+        StringTokenizer sT = new StringTokenizer(valores, ",");
+        //  for(int i=0;i<valores.length();i++){
+        while (sT.hasMoreTokens()) {
+
+            int x = Integer.parseInt(sT.nextToken());
+            int y = Integer.parseInt(sT.nextToken());
+            Coordenadas c = new Coordenadas(0, 0);
+            c.setX(x);
+            c.setY(y);
+            System.out.println(x+" "+y );
+           
+            for (int j = 0; j < matriz.length; j++) {
+
+                for (int k = 0; k < matriz[0].length; k++) {
+
+                    matriz[j][k] = c;
+                    k = matriz[0].length;
+                    
+                }
+                j = matriz.length;
+               
+            }
+            
+            // }
+        }
         
         
         return matriz;
