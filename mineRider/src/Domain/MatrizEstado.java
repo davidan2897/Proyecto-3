@@ -51,31 +51,25 @@ public class MatrizEstado {
     }
     public Coordenadas[][] enviaMatriz (String valores){
             System.out.println(valores);
-        int aux =0;
         StringTokenizer sT = new StringTokenizer(valores, ",");
-        //  for(int i=0;i<valores.length();i++){
-        while (sT.hasMoreTokens()) {
-
+        int columna =0, fila =0;
+        while (sT.hasMoreTokens() && columna<matriz.length && fila<matriz.length) {          
+          System.out.println(columna+" "+fila);
+        Coordenadas c = new Coordenadas(0, 0);
             int x = Integer.parseInt(sT.nextToken());
             int y = Integer.parseInt(sT.nextToken());
-            Coordenadas c = new Coordenadas(0, 0);
             c.setX(x);
             c.setY(y);
             System.out.println(x+" "+y );
-           
-            for (int j = 0; j < matriz.length; j++) {
-
-                for (int k = 0; k < matriz[0].length; k++) {
-
-//                    matriz[j][k] = c;
-                    k = matriz[0].length;
-                    
-                }
-                j = matriz.length;
-               
-            }
-            
-            // }
+           matriz[columna][fila]=c;
+          
+           if(columna==matriz.length-1){
+           fila++;
+           columna=0;
+           }
+           columna++;
+                   
+         
         }
         
         
