@@ -18,7 +18,7 @@ public class Auxiliar {
     Coordenadas cordenadas;
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
-        //Separar cada uno en diferentes métodos como el del zombie
+
         imagenPersonaje.setFitHeight(tamañoImagenes);
         imagenPersonaje.setFitWidth(tamañoImagenes);
 
@@ -26,7 +26,6 @@ public class Auxiliar {
         imagenPersonaje.setLayoutY(70);
         matrizEstado.muestraMatriz();
 
-//        MatrizEstado.getInstance().mostrarMatrizConsola();
     }
 
     public ImageView crearZombie(int tamañoImagenes, int tamañoColumna) {
@@ -35,7 +34,6 @@ public class Auxiliar {
 
         int x = cordenadas.getX();
         int y = cordenadas.getY();
-
 
         ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
         imagenZombie.setFitHeight(tamañoImagenes);
@@ -49,11 +47,6 @@ public class Auxiliar {
     }
 
     public ImageView crearChimera(int tamañoImagenes, int tamañoColumna) {
-        //ToDo...
-        /*
-            Falta asociar la matriz de estado con los valores de posición X, Y
-         */
-        //MatrizEstado.getInstance().actualizarPosicion(2, 3, 7);
         ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
         imagenChimera.setFitHeight(tamañoImagenes);
         imagenChimera.setFitWidth(tamañoImagenes);

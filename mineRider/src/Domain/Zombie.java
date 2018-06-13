@@ -125,8 +125,8 @@ public class Zombie implements Runnable{
         transitionPersonaje.setToX(posicionZ);
          transitionPersonaje.setNode(imagen);
          
-         transitionPersonaje.setAutoReverse(true);
-         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
+//         transitionPersonaje.setAutoReverse(true);
+//         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
          transitionPersonaje.play();
          posicionZ-=100;
            

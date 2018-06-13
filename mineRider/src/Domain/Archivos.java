@@ -9,9 +9,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import javafx.event.ActionEvent;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -21,18 +18,12 @@ import org.json.simple.parser.ParseException;
  */
 public class Archivos {
 
-
-
-
-
- 
-
 public ArrayList leerJson(){
           ArrayList array=new ArrayList();
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\prueba.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\NetBeansProjects\\Programacion II\\Proyecto 3\\Proyecto-3\\mineRider\\prueba.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -42,13 +33,6 @@ public ArrayList leerJson(){
             String ancho = (String) jsonObject.get("ancho");
             System.out.println(ancho);
 
-
-//            // loop array
-//            JSONArray cars = (JSONArray) jsonObject.get("cars");
-//            Iterator<String> iterator = cars.iterator();
-//            while (iterator.hasNext()) {
-//             System.out.println(iterator.next());
-//            }
         array.add(alto);
         array.add(ancho);
         } catch (FileNotFoundException e) {
@@ -81,7 +65,7 @@ public void escribir(){
 
  
 
-            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp\\Proyecto-3\\mineRider\\prueba.json");
+            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\Berny\\Documents\\NetBeansProjects\\Programacion II\\Proyecto 3\\Proyecto-3\\mineRider\\prueba.json");
 
             jsonFileWriter.write(jsonObject.toJSONString());
 

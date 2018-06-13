@@ -1,4 +1,3 @@
-
 import Domain.Archivos;
 import Domain.Auxiliar;
 import Domain.Cueva;
@@ -23,24 +22,21 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-//      Archivos archivo=new Archivos();
-//        ArrayList tamaño=archivo.leerJson();
-         int TamañoFilaCueva=12;
-//                 Integer.parseInt((String) tamaño.get(0));
-        int TamañoColumnaCueva=12;
-//                Integer.parseInt((String) tamaño.get(1));
+//    Archivos archivo = new Archivos();
+//    ArrayList tamaño = archivo.leerJson();
+    int TamañoFilaCueva =6;
+    //Integer.parseInt((String) tamaño.get(0));                
+    int TamañoColumnaCueva =6; 
+            //Integer.parseInt((String) tamaño.get(1));              
     Auxiliar auxiliar = new Auxiliar();
-  //  int TamañoFilaCueva = 12;
-   // int TamañoColumnaCueva = 12;
-    int tamañoImagenes=100;
-    double tamañoDespalzamiento =0.1;
+    int tamañoImagenes = 100;
+    double tamañoDespalzamiento = 0.1;
     int posX = 0;
     int posY = 0;
     Cueva cueva = new Cueva(655, 575, "Plana");
 
-
     ImageView imagenPersonaje = new ImageView("Imagenes/ash2.jpg");
-   
+
     Image ImagenPersonajeIzquierda = new Image("Imagenes/ash3.jpg");
     Image ImagenPersonajeDerecha = new Image("Imagenes/ash1.jpg");
     Image ImagenPersonajeArriba = new Image("Imagenes/ash4.jpg");
@@ -60,8 +56,9 @@ public class FXMLDocumentController implements Initializable {
     private GridPane gridCountainer;
     @FXML
     private ScrollPane scrollPricnipal;
-     @FXML
-     private ProgressBar p2 ;
+    @FXML
+    private ProgressBar p2;
+
     //movimiento Personaje
     public void teclas() {
         Teclado teclado = new Teclado();
@@ -140,7 +137,7 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-        
+
         ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
         for (int r = 0; r < TamañoFilaCueva; r++) {
             for (int c = 0; c < TamañoColumnaCueva; c++) {
@@ -151,23 +148,22 @@ public class FXMLDocumentController implements Initializable {
                 gridCountainer.add(ImagesMatriz[c][r], c, r);
             }
         }
-        gridCountainer.setMinSize(TamañoFilaCueva* tamañoImagenes,  TamañoColumnaCueva* tamañoImagenes);
+        gridCountainer.setMinSize(TamañoFilaCueva * tamañoImagenes, TamañoColumnaCueva * tamañoImagenes);
         anchorCountainerMap.getChildren().addAll(imagenPersonaje);
-        auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje);
+        auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 2; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
         }
 
     }
-  
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-        
+
     }
 
 }

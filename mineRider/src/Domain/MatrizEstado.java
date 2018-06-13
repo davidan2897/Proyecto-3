@@ -1,6 +1,10 @@
 package Domain;
 
+
+
 import java.util.StringTokenizer;
+
+
 
 public class MatrizEstado {
 
@@ -15,7 +19,8 @@ public class MatrizEstado {
     }
 
     public MatrizEstado() {
-        this.matriz = new Coordenadas[12][12];
+        
+        this.matriz = new Coordenadas[6][6];
     }
 
     public String enviarMatrizCoordenadas() {
@@ -50,17 +55,17 @@ public class MatrizEstado {
         return valores;
     }
     public Coordenadas[][] enviaMatriz (String valores){
-            System.out.println(valores);
+//            System.out.println(valores);
         StringTokenizer sT = new StringTokenizer(valores, ",");
         int columna =0, fila =0;
         while (sT.hasMoreTokens() && columna<matriz.length && fila<matriz.length) {          
-          System.out.println(columna+" "+fila);
+//          System.out.println(columna+" "+fila);
         Coordenadas c = new Coordenadas(0, 0);
             int x = Integer.parseInt(sT.nextToken());
             int y = Integer.parseInt(sT.nextToken());
             c.setX(x);
             c.setY(y);
-            System.out.println(x+" "+y );
+//            System.out.println(x+" "+y );
            matriz[columna][fila]=c;
         
            if(columna==matriz.length-1){
