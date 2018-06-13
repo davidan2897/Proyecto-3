@@ -39,12 +39,7 @@ public class Auxiliar {
         imagenZombie.setFitWidth(tamañoImagenes);
         imagenZombie.setLayoutX(40);
         imagenZombie.setLayoutY(570);
-//        for (int i = 0; i < matriz.length; i++) {
-//            for (int j = 0; j < matriz[0].length; j++) {
-//                System.out.println(matriz[i][j].toString());
-//            }
-//        }
-
+//     
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
 //        zombie.run();
         return imagenZombie;

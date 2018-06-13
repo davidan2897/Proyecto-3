@@ -67,7 +67,7 @@ public class MatrizEstado {
 
                 for (int k = 0; k < matriz[0].length; k++) {
 
-                    matriz[j][k] = c;
+//                    matriz[j][k] = c;
                     k = matriz[0].length;
                     
                 }
