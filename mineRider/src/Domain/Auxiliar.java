@@ -22,20 +22,21 @@ public class Auxiliar {
        
         imagenPersonaje.setLayoutX(40);
         imagenPersonaje.setLayoutY(70);
+        matrizEstado.muestraMatriz();
+     
 //        MatrizEstado.getInstance().mostrarMatrizConsola();
     }
 
-    public ImageView crearZombie(int tamañoImagenes, int tamañoColumna ) {
+    public ImageView crearZombie(int tamañoImagenes, int tamañoColumna) {
        
+               int a = (int) ((int) +1 + ((Math.random() * tamañoColumna - 1)));
+            int b = (int) ((int) +1 + ((Math.random() * tamañoColumna - 1)));
       
-       int a= (int)((Math.random()*5));
-       int b=(int)((Math.random()*5));
-       int c=(int)((Math.random()*5));
-       int d =(int)((Math.random()*5));
+
        
-       int x = matriz[a][b].getX();
-       int y = matriz[c][d].getY();
-        System.out.println("a "+a+" b"+b+" c "+c+" d "+d);
+       int x = matriz[a][a].getX();
+       int y = matriz[b][b].getY();
+        System.out.println("a "+a+" b"+b);
         //ToDo...
         /*
             Falta asociar la matriz de estado con los valores de posición X, Y
@@ -46,11 +47,7 @@ public class Auxiliar {
         imagenZombie.setFitWidth(tamañoImagenes);
         imagenZombie.setLayoutX(x);
         imagenZombie.setLayoutY(y);
-//        for (int i = 0; i < matriz.length; i++) {
-//            for (int j = 0; j < matriz[0].length; j++) {
-//                System.out.println(matriz[i][j].getX()+"  "+matriz[i][j].getY());
-//            }
-//        }
+       
 
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
 //        zombie.run();
@@ -65,13 +62,13 @@ public class Auxiliar {
         ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
            imagenChimera.setFitHeight(tamañoImagenes);
            imagenChimera.setFitWidth(tamañoImagenes);
-           int a = (int) ((Math.random() * 5));
-           int b = (int) ((Math.random() * 5));
-           int c = (int) ((Math.random() *5));
-           int d = (int) ((Math.random() * 5));
+           int a = (int) ((Math.random() * tamañoColumna - 1));
+           int b = (int) ((Math.random() * tamañoColumna - 1));
+           int c = (int) ((Math.random() * tamañoColumna - 1));
+           int d = (int) ((Math.random() * tamañoColumna - 1));
 
-           int x = matriz[a][b].getX();
-           int y = matriz[c][d].getY();
+           int x = matriz[a][a].getX();
+           int y = matriz[c][c].getY();
 
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);

@@ -25,9 +25,9 @@ import javafx.scene.layout.GridPane;
 public class FXMLDocumentController implements Initializable {
 //      Archivos archivo=new Archivos();
 //        ArrayList tamaño=archivo.leerJson();
-         int TamañoFilaCueva=6;
+         int TamañoFilaCueva=12;
 //                 Integer.parseInt((String) tamaño.get(0));
-        int TamañoColumnaCueva=6;
+        int TamañoColumnaCueva=12;
 //                Integer.parseInt((String) tamaño.get(1));
     Auxiliar auxiliar = new Auxiliar();
   //  int TamañoFilaCueva = 12;
@@ -37,6 +37,7 @@ public class FXMLDocumentController implements Initializable {
     int posX = 0;
     int posY = 0;
     Cueva cueva = new Cueva(655, 575, "Plana");
+
 
     ImageView imagenPersonaje = new ImageView("Imagenes/ash2.jpg");
    
@@ -155,7 +156,7 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
         }

@@ -15,7 +15,7 @@ public class MatrizEstado {
     }
 
     public MatrizEstado() {
-        this.matriz = new Coordenadas[6][6];
+        this.matriz = new Coordenadas[12][12];
     }
 
     public String enviarMatrizCoordenadas() {
@@ -62,7 +62,7 @@ public class MatrizEstado {
             c.setY(y);
             System.out.println(x+" "+y );
            matriz[columna][fila]=c;
-          
+        
            if(columna==matriz.length-1){
            fila++;
            columna=0;
@@ -79,6 +79,15 @@ public class MatrizEstado {
         
         
         
+        
+        
+    }
+    public void muestraMatriz(){
+                    for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) {
+//                System.out.println(matriz[i][j].getX()+"  "+matriz[i][j].getY());
+            }
+        }
         
         
     }
