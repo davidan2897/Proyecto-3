@@ -18,16 +18,17 @@ public class Auxiliar {
         imagenPersonaje.setFitHeight(tamañoImagenes);
         imagenPersonaje.setFitWidth(tamañoImagenes);
        
-        imagenPersonaje.setLayoutX(140);
-        imagenPersonaje.setLayoutY(170);
-
-//        MatrizEstado.getInstance().actualizarPosicion(3, 0, 0);
-//        MatrizEstado.getInstance().actualizarPosicion(2, 3, 7);
-//        MatrizEstado.getInstance().actualizarPosicion(2, 2, 7);
-        MatrizEstado.getInstance().mostrarMatrizConsola();
+        imagenPersonaje.setLayoutX(40);
+        imagenPersonaje.setLayoutY(70);
+//        MatrizEstado.getInstance().mostrarMatrizConsola();
     }
 
     public ImageView crearZombie(int tamañoImagenes, int tamañoColumna ) {
+        MatrizEstado matrizEstado = new MatrizEstado();
+        matrizEstado.enviarMatrizCoordenadas();
+       Coordenadas matriz[][]= matrizEstado.enviaMatriz(matrizEstado.enviarMatrizCoordenadas());
+       int x = matriz[2][2].getX();
+       int y = matriz[2][2].getY();
         //ToDo...
         /*
             Falta asociar la matriz de estado con los valores de posición X, Y
@@ -36,14 +37,16 @@ public class Auxiliar {
         ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
         imagenZombie.setFitHeight(tamañoImagenes);
         imagenZombie.setFitWidth(tamañoImagenes);
-      
-        int posX = (int) +(Math.random() * 5);
-        int posY = (int) +(Math.random() * 5);
+        imagenZombie.setLayoutX(x);
+        imagenZombie.setLayoutY(y);
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                System.out.println(matriz[i][j].toString());
+            }
+        }
 
-        imagenZombie.setLayoutX((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
-        imagenZombie.setLayoutY((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
-        zombie.run();
+//        zombie.run();
         return imagenZombie;
     }
        public ImageView crearChimera(int tamañoImagenes, int tamañoColumna) {
@@ -55,14 +58,11 @@ public class Auxiliar {
         ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
         imagenChimera.setFitHeight(tamañoImagenes);
         imagenChimera.setFitWidth(tamañoImagenes);
-        
-        int posX = (int) +(Math.random() * 5);
-        int posY = (int) +(Math.random() * 5);
 
         imagenChimera.setLayoutX((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
         imagenChimera.setLayoutY((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
-        Chimera chimera = new Chimera("", posY, posY, posY, posY, posY, posY, "", imagenChimera);
-        chimera.run();
+        Chimera chimera = new Chimera("", 0, 0, 0, 0, 0, 0, "", imagenChimera);
+//        chimera.run();
         return imagenChimera;
     }
 }
