@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -58,7 +59,8 @@ public class FXMLDocumentController implements Initializable {
     private GridPane gridCountainer;
     @FXML
     private ScrollPane scrollPricnipal;
-
+     @FXML
+     private ProgressBar p2 ;
     //movimiento Personaje
     public void teclas() {
         Teclado teclado = new Teclado();
@@ -137,7 +139,7 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-
+        
         ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
         for (int r = 0; r < TamañoFilaCueva; r++) {
             for (int c = 0; c < TamañoColumnaCueva; c++) {
@@ -159,6 +161,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
+  
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

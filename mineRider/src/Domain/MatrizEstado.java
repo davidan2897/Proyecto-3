@@ -45,30 +45,35 @@ public class MatrizEstado {
 //            valores += "\n";
           
         }
-        System.out.println(valores);
+       System.out.println(valores+"aaaa");
         return valores;
     }
     public Coordenadas[][] enviaMatriz (String valores){
-     
-      for(int i=0;i<valores.length();i++){
-      
-        StringTokenizer sT =  new StringTokenizer(valores,",");
-        int x = Integer.parseInt(sT.nextToken());
-        int y=Integer.parseInt(sT.nextToken());
+         StringTokenizer sT =  new StringTokenizer(valores,",");
+    //  for(int i=0;i<valores.length();i++){
+          while(sT.hasMoreTokens()){
        
+        int x = Integer.parseInt(sT.nextToken());
+       int y=Integer.parseInt(sT.nextToken());
+       
+          System.out.println("PASO1"+x);
+          
           for (int j = 0; j < matriz.length; j++) {
+               System.out.println("PASO2");
               for (int k = 0; k < matriz[0].length; k++) {
+                  
+        System.out.println(x);
                Coordenadas c = new Coordenadas(0, 0);
                c.setX(x);
                c.setY(y);
                matriz[j][k]= c;
-               
+                   }
               }
               
+         // }
+        
+        
           }
-        
-        
-      }
         
         
         return matriz;
