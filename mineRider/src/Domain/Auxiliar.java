@@ -13,22 +13,20 @@ import javafx.scene.image.ImageView;
  */
 public class Auxiliar {
 
-    public void PosicionInicial(int tamañoImagenes,ImageView imagenPersonaje, ImageView ImagenRocas) {
+    public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
         //Separar cada uno en diferentes métodos como el del zombie
         imagenPersonaje.setFitHeight(tamañoImagenes);
         imagenPersonaje.setFitWidth(tamañoImagenes);
         MatrizEstado.getInstance().actualizarPosicion(1, 4, 4);
         imagenPersonaje.setLayoutX(40);
         imagenPersonaje.setLayoutY(70);
-        ImagenRocas.setFitHeight(50);
-        ImagenRocas.setFitWidth(50);
+
         MatrizEstado.getInstance().actualizarPosicion(3, 0, 0);
-        ImagenRocas.setLayoutX(400);
-        ImagenRocas.setLayoutY(175);
+
         MatrizEstado.getInstance().mostrarMatrizConsola();
     }
 
-    public ImageView crearZombie(int tamañoImagenes) {
+    public ImageView crearZombie(int tamañoImagenes, int tamañoColumna ) {
         //ToDo...
         /*
             Falta asociar la matriz de estado con los valores de posición X, Y
@@ -41,13 +39,13 @@ public class Auxiliar {
         int posX = (int) +(Math.random() * 5);
         int posY = (int) +(Math.random() * 5);
 
-        imagenZombie.setLayoutX((50) +(Math.random() *600));
-        imagenZombie.setLayoutY((50) +(Math.random() * 600));
+        imagenZombie.setLayoutX((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
+        imagenZombie.setLayoutY((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
-        zombie.run();
+//        zombie.run();
         return imagenZombie;
     }
-       public ImageView crearChimera(int tamañoImagenes) {
+       public ImageView crearChimera(int tamañoImagenes, int tamañoColumna) {
         //ToDo...
         /*
             Falta asociar la matriz de estado con los valores de posición X, Y
@@ -60,10 +58,10 @@ public class Auxiliar {
         int posX = (int) +(Math.random() * 5);
         int posY = (int) +(Math.random() * 5);
 
-        imagenChimera.setLayoutX((50) +(Math.random() *600));
-        imagenChimera.setLayoutY((50) +(Math.random() * 600));
+        imagenChimera.setLayoutX((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
+        imagenChimera.setLayoutY((tamañoImagenes) +(Math.random() *(tamañoImagenes*tamañoColumna-tamañoImagenes)));
         Chimera chimera = new Chimera("", posY, posY, posY, posY, posY, posY, "", imagenChimera);
-        chimera.run();
+//        chimera.run();
         return imagenChimera;
     }
 }

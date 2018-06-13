@@ -13,7 +13,7 @@ public class MatrizEstado {
     }
     
     public MatrizEstado(){
-        this.matriz = new int[8][8];
+        this.matriz = new int[12][12];
     }
     
     public void actualizarPosicion(int elemento, int posicionX, int posicionY){

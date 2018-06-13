@@ -120,7 +120,7 @@ public class Chimera implements Runnable{
          transitionPersonaje.setCycleCount(Animation.INDEFINITE);
          transitionPersonaje.play();
          posicionZ-=100;
-            System.out.println(posicionZ); 
+          
     }
      
 }

@@ -22,10 +22,12 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-      Archivos archivo=new Archivos();
-        ArrayList tamaño=archivo.leerJson();
-         int TamañoFilaCueva=Integer.parseInt((String) tamaño.get(0));
-        int TamañoColumnaCueva=Integer.parseInt((String) tamaño.get(1));
+//      Archivos archivo=new Archivos();
+//        ArrayList tamaño=archivo.leerJson();
+         int TamañoFilaCueva=10;
+//                 Integer.parseInt((String) tamaño.get(0));
+        int TamañoColumnaCueva=10;
+//                Integer.parseInt((String) tamaño.get(1));
     Auxiliar auxiliar = new Auxiliar();
   //  int TamañoFilaCueva = 12;
    // int TamañoColumnaCueva = 12;
@@ -36,7 +38,7 @@ public class FXMLDocumentController implements Initializable {
     Cueva cueva = new Cueva(655, 575, "Plana");
 
     ImageView imagenPersonaje = new ImageView("Imagenes/ash2.jpg");
-    ImageView imagenRocas = new ImageView("Imagenes/images.jpg");
+   
     Image ImagenPersonajeIzquierda = new Image("Imagenes/ash3.jpg");
     Image ImagenPersonajeDerecha = new Image("Imagenes/ash1.jpg");
     Image ImagenPersonajeArriba = new Image("Imagenes/ash4.jpg");
@@ -135,16 +137,11 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-//             Archivos archivo=new Archivos();
-//        ArrayList tamaño=archivo.leerJson();
-//         int alto=Integer.parseInt((String) tamaño.get(0));
-//        int ancho=Integer.parseInt((String) tamaño.get(1));
+
         ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
         for (int r = 0; r < TamañoFilaCueva; r++) {
             for (int c = 0; c < TamañoColumnaCueva; c++) {
                 ImageView imageViewControladorImagenes = new ImageView("Imagenes/floor.jpg");
-//                if(r==(int)+(Math.random()*TamañoFilaCueva) && c==(int)+(Math.random()*TamañoColumnaCueva))
-//                imageViewControladorImagenes = imagenRocas;
                 imageViewControladorImagenes.setFitHeight(tamañoImagenes);
                 imageViewControladorImagenes.setFitWidth(tamañoImagenes);
                 ImagesMatriz[c][r] = imageViewControladorImagenes;
@@ -152,13 +149,13 @@ public class FXMLDocumentController implements Initializable {
             }
         }
         gridCountainer.setMinSize(TamañoFilaCueva* tamañoImagenes,  TamañoColumnaCueva* tamañoImagenes);
-        anchorCountainerMap.getChildren().addAll(imagenPersonaje, imagenRocas);
-        auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje, imagenRocas);
+        anchorCountainerMap.getChildren().addAll(imagenPersonaje);
+        auxiliar.PosicionInicial(tamañoImagenes,imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 10; i++) {
-            anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes));
-            anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes));
+        for (int i = 0; i < 3; i++) {
+            anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
+            anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
         }
 
     }
