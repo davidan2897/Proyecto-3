@@ -26,7 +26,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        String icon="Imagenes/logo.jpg";
+        String icon="Imagenes/logo.png";
         stage.getIcons().add(new Image(icon ));
         stage.setTitle("MineRider");
         stage.show();

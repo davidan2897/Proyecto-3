@@ -24,14 +24,14 @@ import javafx.scene.layout.GridPane;
 public class FXMLDocumentController implements Initializable {
 //      Archivos archivo=new Archivos();
 //        ArrayList tamaño=archivo.leerJson();
-         int TamañoFilaCueva=10;
+         int TamañoFilaCueva=6;
 //                 Integer.parseInt((String) tamaño.get(0));
-        int TamañoColumnaCueva=10;
+        int TamañoColumnaCueva=6;
 //                Integer.parseInt((String) tamaño.get(1));
     Auxiliar auxiliar = new Auxiliar();
   //  int TamañoFilaCueva = 12;
    // int TamañoColumnaCueva = 12;
-    int tamañoImagenes=50;
+    int tamañoImagenes=100;
     double tamañoDespalzamiento =0.1;
     int posX = 0;
     int posY = 0;

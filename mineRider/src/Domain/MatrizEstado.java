@@ -13,7 +13,7 @@ public class MatrizEstado {
     }
     
     public MatrizEstado(){
-        this.matriz = new int[12][12];
+        this.matriz = new int[6][6];
     }
     
     public void actualizarPosicion(int elemento, int posicionX, int posicionY){
@@ -22,9 +22,13 @@ public class MatrizEstado {
     
     public void mostrarMatrizConsola(){
         String valores="";
+        int x=40;
+        int y=70;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                valores+="["+matriz[i][j]+"]";
+                valores+="["+x+" "+y+"]";
+                x+=100;
+                y+=100;
             }
             valores+="\n";
         }

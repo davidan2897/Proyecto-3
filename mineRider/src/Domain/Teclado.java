@@ -25,9 +25,6 @@ TranslateTransition transitionPersonaje;
          
           transitionPersonaje.play(); 
 
-        System.out.println(posX);
-    
-    
     }//fin mover derecha
     
      public void moverIzquierda(int posX,ImageView imagenPersonaje){
@@ -38,8 +35,6 @@ TranslateTransition transitionPersonaje;
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
-         
-         System.out.println(posX);
 
 }//fin mover izquierda
      
@@ -52,8 +47,6 @@ TranslateTransition transitionPersonaje;
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
-         
-         System.out.println(posY);
 
       }//mover arriba
         
@@ -66,9 +59,6 @@ TranslateTransition transitionPersonaje;
          transitionPersonaje.setNode(imagenPersonaje);
          
           transitionPersonaje.play(); 
-       
-         System.out.println(posY);
-
       }//fin moverAbajo
       
       
