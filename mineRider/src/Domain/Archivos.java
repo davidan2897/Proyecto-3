@@ -23,7 +23,7 @@ public ArrayList leerJson(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\NetBeansProjects\\Programacion II\\Proyecto 3\\Proyecto-3\\mineRider\\prueba.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\prueba.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -49,11 +49,11 @@ public void escribir(){
 
  
 
-        jsonObject.put("alto", 60);
+        jsonObject.put("alto", "20");
 
  
 
-        jsonObject.put("ancho", 120);
+        jsonObject.put("ancho", "20");
 
  
 
@@ -65,7 +65,7 @@ public void escribir(){
 
  
 
-            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\Berny\\Documents\\NetBeansProjects\\Programacion II\\Proyecto 3\\Proyecto-3\\mineRider\\prueba.json");
+            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\prueba.json");
 
             jsonFileWriter.write(jsonObject.toJSONString());
 

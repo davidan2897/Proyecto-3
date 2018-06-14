@@ -22,8 +22,8 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-//    Archivos archivo = new Archivos();
-//    ArrayList tamaño = archivo.leerJson();
+   Archivos archivo = new Archivos();
+   ArrayList tamaño = archivo.leerJson();
     int TamañoFilaCueva =6;
     //Integer.parseInt((String) tamaño.get(0));                
     int TamañoColumnaCueva =6; 
@@ -163,6 +163,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
+       
 
     }
 
