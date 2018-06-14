@@ -22,11 +22,11 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-   Archivos archivo = new Archivos();
-   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva =6;
-    //Integer.parseInt((String) tamaño.get(0));                
-    int TamañoColumnaCueva =6; 
+//   Archivos archivo = new Archivos();
+//   ArrayList tamaño = archivo.leerJson();
+    int TamañoFilaCueva =10;  
+    //             
+    int TamañoColumnaCueva =10;
             //Integer.parseInt((String) tamaño.get(1));              
     Auxiliar auxiliar = new Auxiliar();
     int tamañoImagenes = 100;
@@ -153,7 +153,7 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 5; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
         }
@@ -163,8 +163,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-       
-
+     
     }
 
 }

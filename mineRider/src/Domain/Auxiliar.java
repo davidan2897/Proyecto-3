@@ -18,13 +18,21 @@ public class Auxiliar {
     Coordenadas cordenadas;
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
-
+    String s = "";
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j <matriz[0].length; j++) {
+                s+=" ["+matriz[i][j].getX()+" "+matriz[i][j].getY()+"]";
+                   
+            }
+            s+="\n";
+        }
+        System.out.println(s);
         imagenPersonaje.setFitHeight(tamañoImagenes);
         imagenPersonaje.setFitWidth(tamañoImagenes);
 
         imagenPersonaje.setLayoutX(40);
         imagenPersonaje.setLayoutY(70);
-        matrizEstado.muestraMatriz();
+
 
     }
 
