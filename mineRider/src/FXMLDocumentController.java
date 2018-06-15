@@ -1,17 +1,15 @@
-import Domain.Archivos;
+
 import Domain.Auxiliar;
 import Domain.Cueva;
 import Domain.MatrizEstado;
 import Domain.Personaje;
 import Domain.Teclado;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,25 +21,26 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
- ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
- MatrizEstado matrixEstado =new MatrizEstado();
+
+    ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
+    MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva =10;
+    int TamañoFilaCueva = 10;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva =10;
+    int TamañoColumnaCueva = 10;
 //            Integer.parseInt((String) tamaño.get(1));    
-            //          
+    //          
     Auxiliar auxiliar = new Auxiliar();
     int tamañoImagenes = 100;
-    double tamañoDespalzamiento = 0.1;
+    double tamañoDespalzamiento = 0.15;
     int posX = 0;
     int posY = 0;
     int x = 0;
     int y = 0;
     double posicionV;
     double posicionH;
-    int posicionVacio=0;
+    int posicionVacio = 0;
     Cueva cueva = new Cueva(655, 575, "Plana");
 
     ImageView imagenPersonaje = new ImageView("Imagenes/ash2.jpg");
@@ -66,89 +65,89 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ScrollPane scrollPricnipal;
 
-
     //movimiento Personaje
     public void teclas() {
-        
+
         Teclado teclado = new Teclado();
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                    if(matrixEstado.getMatriz()[y-1][x]== posicionVacio){
-                    y-=1;
-                     matrixEstado.actualizarPosicion(1, y, x);
-                    matrixEstado.actualizarPosicion(posicionVacio, y+1, x);
-                    matrixEstado.mostrarMatrizConsola();
-                    
                     posicionV = scrollPricnipal.getVvalue();
+                    if (matrixEstado.getMatriz()[y - 1][x] == posicionVacio) {
+                        y -= 1;
+                        matrixEstado.actualizarPosicion(1, y, x);
+                        matrixEstado.actualizarPosicion(posicionVacio, y + 1, x);
+                        matrixEstado.mostrarMatrizConsola();
 
-                    personaje.setDireccion("arriba");
-                    personaje.setUrl(ImagenPersonajeArriba);
-                    imagenPersonaje.setImage(personaje.getUrl());
-                    if (posY > 0) {
-                        posY -= tamañoImagenes;
-                        teclado.moverArriba(posY, imagenPersonaje);
-                    }
+                        personaje.setDireccion("arriba");
+                        personaje.setUrl(ImagenPersonajeArriba);
+                        imagenPersonaje.setImage(personaje.getUrl());
+                        if (posY > 0) {
+                            posY -= tamañoImagenes;
+                            teclado.moverArriba(posY, imagenPersonaje);
+                        }
 
-                    scrollPricnipal.setVvalue(posicionV - tamañoDespalzamiento);
+                        scrollPricnipal.setVvalue(posicionV - tamañoDespalzamiento);
                     }
                     break;
                 case DOWN:
-  if(matrixEstado.getMatriz()[y+1][x]== posicionVacio){
-                    y+=1;
-                     matrixEstado.actualizarPosicion(1, y, x);
-                    matrixEstado.actualizarPosicion(posicionVacio, y-1, x);
-                    matrixEstado.mostrarMatrizConsola();
-                    posicionV = scrollPricnipal.getVvalue();
+                     posicionV = scrollPricnipal.getVvalue();
+                    if (matrixEstado.getMatriz()[y + 1][x] == posicionVacio) {
+                        y += 1;
+                        matrixEstado.actualizarPosicion(1, y, x);
+                        matrixEstado.actualizarPosicion(posicionVacio, y - 1, x);
+                        matrixEstado.mostrarMatrizConsola();
+                       
 
-                    personaje.setDireccion("abajo");
-                    personaje.setUrl(ImagenPersonajeAbajo);
-                    imagenPersonaje.setImage(personaje.getUrl());
+                        personaje.setDireccion("abajo");
+                        personaje.setUrl(ImagenPersonajeAbajo);
+                        imagenPersonaje.setImage(personaje.getUrl());
 
-                    if (posY < (tamañoImagenes * (TamañoColumnaCueva - 1))) {
-                        posY += tamañoImagenes;
-                        teclado.moveraAbajo(posY, imagenPersonaje);
+                        if (posY < (tamañoImagenes * (TamañoColumnaCueva - 1))) {
+                            posY += tamañoImagenes;
+                            teclado.moveraAbajo(posY, imagenPersonaje);
+                        }
+                        scrollPricnipal.setVvalue(posicionV + tamañoDespalzamiento);
                     }
-                    scrollPricnipal.setVvalue(posicionV + tamañoDespalzamiento);
-  }
                     break;
                 case LEFT:
-                    if(matrixEstado.getMatriz()[y][x-1]== posicionVacio){
-                    x-=1;
-                     matrixEstado.actualizarPosicion(1, y, x);
-                    matrixEstado.actualizarPosicion(posicionVacio, y, x+1);
-                    matrixEstado.mostrarMatrizConsola();
-                    posicionH = scrollPricnipal.getHvalue();
+                     posicionH = scrollPricnipal.getHvalue();
+                    if (matrixEstado.getMatriz()[y][x - 1] == posicionVacio) {
+                        x -= 1;
+                        matrixEstado.actualizarPosicion(1, y, x);
+                        matrixEstado.actualizarPosicion(posicionVacio, y, x + 1);
+                        matrixEstado.mostrarMatrizConsola();
+                       
 
-                    personaje.setDireccion("izquierda");
-                    personaje.setUrl(ImagenPersonajeIzquierda);
-                    imagenPersonaje.setImage(personaje.getUrl());
+                        personaje.setDireccion("izquierda");
+                        personaje.setUrl(ImagenPersonajeIzquierda);
+                        imagenPersonaje.setImage(personaje.getUrl());
 
-                    if (posX > 0) {
-                        posX -= tamañoImagenes;
-                        teclado.moverIzquierda(posX, imagenPersonaje);
-                    }
-                    scrollPricnipal.setHvalue(posicionH - tamañoDespalzamiento);
+                        if (posX > 0) {
+                            posX -= tamañoImagenes;
+                            teclado.moverIzquierda(posX, imagenPersonaje);
+                        }
+                        scrollPricnipal.setHvalue(posicionH - tamañoDespalzamiento);
                     }
                     break;
                 case RIGHT:
+                     posicionH = scrollPricnipal.getHvalue();
+                    if (matrixEstado.getMatriz()[y][x + 1] == posicionVacio) {
+                        x += 1;
+                        matrixEstado.actualizarPosicion(1, y, x);
+                        matrixEstado.actualizarPosicion(posicionVacio, y, x - 1);
+                        matrixEstado.mostrarMatrizConsola();
+                        
 
-                    if(matrixEstado.getMatriz()[y][x+1]== posicionVacio){
-                    x+=1;
-                    matrixEstado.actualizarPosicion(1, y, x);
-                    matrixEstado.actualizarPosicion(posicionVacio, y, x-1);
-                    matrixEstado.mostrarMatrizConsola();
-                    posicionH = scrollPricnipal.getHvalue();
+                        personaje.setDireccion("derecha");
+                        personaje.setUrl(ImagenPersonajeDerecha);
+                        imagenPersonaje.setImage(personaje.getUrl());
 
-                    personaje.setDireccion("derecha");
-                    personaje.setUrl(ImagenPersonajeDerecha);
-                    imagenPersonaje.setImage(personaje.getUrl());
-
-                    if (posX < (tamañoImagenes * (TamañoFilaCueva - 1))) {
-                        posX += tamañoImagenes;
-                        teclado.moverDerecha(posX, imagenPersonaje);
-                    }
-                    scrollPricnipal.setHvalue(posicionH + tamañoDespalzamiento);
+                        if (posX < (tamañoImagenes * (TamañoFilaCueva - 1))) {
+                            posX += tamañoImagenes;
+                            teclado.moverDerecha(posX, imagenPersonaje);
+                        }
+                        scrollPricnipal.setHvalue(posicionH + tamañoDespalzamiento);
                     }
                     break;
                 case S:
@@ -187,9 +186,9 @@ public class FXMLDocumentController implements Initializable {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva));
-            
+
         }
-       matrixEstado= auxiliar.enviarMatrizEstado();
+        matrixEstado = auxiliar.enviarMatrizEstado();
     }
 
     @Override
