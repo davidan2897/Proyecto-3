@@ -16,7 +16,7 @@ import javafx.util.Duration;
 
 public class Chimera implements Runnable{
   private String nombre;
-   private int posicion;
+   private int posicionX;
    private int ataqueCorto;
    private int ataqueLargo;
    private int defensa;
@@ -24,10 +24,12 @@ public class Chimera implements Runnable{
    private int alcance;
    private String direccion;
       private ImageView imagen;
+      private int posicionY;
 
-    public Chimera(String nombre, int posicion, int ataqueCorto, int ataqueLargo, int defensa, double retraso, int alcance, String direccion, ImageView imagen) {
+    public Chimera(String nombre, int posicionX, int posicionY, int ataqueCorto, int ataqueLargo, int defensa, double retraso, int alcance, String direccion, ImageView imagen) {
         this.nombre = nombre;
-        this.posicion = posicion;
+        this.posicionX = posicionX;
+        this.posicionY = posicionY;
         this.ataqueCorto = ataqueCorto;
         this.ataqueLargo = ataqueLargo;
         this.defensa = defensa;
@@ -47,12 +49,28 @@ public class Chimera implements Runnable{
         this.nombre = nombre;
     }
 
-    public int getPosicion() {
-        return posicion;
+    public int getPosicionX() {
+        return posicionX;
     }
 
     public void setPosicion(int posicion) {
-        this.posicion = posicion;
+        this.posicionX = posicion;
+    }
+
+    public ImageView getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(ImageView imagen) {
+        this.imagen = imagen;
+    }
+
+    public int getPosicionY() {
+        return posicionY;
+    }
+
+    public void setPosicionY(int posicionY) {
+        this.posicionY = posicionY;
     }
 
     public int getAtaqueCorto() {
@@ -106,7 +124,8 @@ public class Chimera implements Runnable{
     @Override
     public void run() {
         int posicionZ =0;
-        for (int i = 0; i < 2; i++) {
+        boolean estado=true;
+        for (int i = 0; i < 10; i++) {
             
         
          TranslateTransition transitionPersonaje = new TranslateTransition(); 
@@ -116,8 +135,8 @@ public class Chimera implements Runnable{
         transitionPersonaje.setToY(posicionZ);
          transitionPersonaje.setNode(imagen);
          
-         transitionPersonaje.setAutoReverse(true);
-         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
+//         transitionPersonaje.setAutoReverse(true);
+//         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
          transitionPersonaje.play();
          posicionZ-=100;
           

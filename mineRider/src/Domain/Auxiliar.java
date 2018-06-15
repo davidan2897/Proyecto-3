@@ -14,10 +14,14 @@ import javafx.scene.image.ImageView;
 public class Auxiliar {
 
     MatrizEstado matrizEstado = new MatrizEstado();
-    Coordenadas matriz[][] = matrizEstado.enviaMatriz(matrizEstado.enviarMatrizCoordenadas());
+    Coordenadas matriz[][] = matrizEstado.enviaMatriz(matrizEstado.enviarCoordenadas());
     Coordenadas cordenadas;
+    Matriz matrix= new Matriz();
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
+        matrix.actualizarPosicion(1, 0, 0);
+       
+        
     String s = "";
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j <matriz[0].length; j++) {
@@ -37,12 +41,14 @@ public class Auxiliar {
     }
 
     public ImageView crearZombie(int tamañoImagenes, int tamañoColumna) {
-
-        cordenadas = matriz[(int) (Math.random() * tamañoColumna - 1)][(int) (Math.random() * tamañoColumna - 1)];
+        int a=(int) (Math.random() * tamañoColumna - 1);
+        int b=(int) (Math.random() * tamañoColumna - 1);
+        cordenadas = matriz[a][b];
 
         int x = cordenadas.getX();
         int y = cordenadas.getY();
-
+        matrix.actualizarPosicion(2, a, b);
+         matrix.mostrarMatrizConsola();
         ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
         imagenZombie.setFitHeight(tamañoImagenes);
         imagenZombie.setFitWidth(tamañoImagenes);
@@ -50,6 +56,7 @@ public class Auxiliar {
         imagenZombie.setLayoutY(y);
 
         Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
+        
 //        zombie.run();
         return imagenZombie;
     }
@@ -58,14 +65,17 @@ public class Auxiliar {
         ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
         imagenChimera.setFitHeight(tamañoImagenes);
         imagenChimera.setFitWidth(tamañoImagenes);
-        cordenadas = matriz[(int) (Math.random() * tamañoColumna - 1)][(int) (Math.random() * tamañoColumna - 1)];
-
+        int a=(int) (Math.random() * tamañoColumna - 1);
+        int b=(int) (Math.random() * tamañoColumna - 1);
+        cordenadas = matriz[a][b];
+        matrix.actualizarPosicion(3, a, b);
+        matrix.mostrarMatrizConsola();
         int x = cordenadas.getX();
         int y = cordenadas.getY();
 
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);
-        Chimera chimera = new Chimera("", 0, 0, 0, 0, 0, 0, "", imagenChimera);
+        Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
 //        chimera.run();
         return imagenChimera;
     }

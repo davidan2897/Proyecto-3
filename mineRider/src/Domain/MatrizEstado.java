@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 
 public class MatrizEstado {
-
+    
     private static MatrizEstado instance;
     private Coordenadas matriz[][];
 
@@ -20,10 +20,10 @@ public class MatrizEstado {
 
     public MatrizEstado() {
         
-        this.matriz = new Coordenadas[10][10];
+        this.matriz = new Coordenadas[20][20];
     }
 
-    public String enviarMatrizCoordenadas() {
+    public String enviarCoordenadas() {
         String valores = "";
         Coordenadas coordenadas = new Coordenadas(40, 70);
         int aux = 1;
@@ -79,13 +79,7 @@ public class MatrizEstado {
         
         
         return matriz;
-        
-        
-        
-        
-        
-        
-        
+
     }
 
         

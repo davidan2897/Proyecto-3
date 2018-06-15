@@ -1,6 +1,7 @@
 import Domain.Archivos;
 import Domain.Auxiliar;
 import Domain.Cueva;
+import Domain.Matriz;
 import Domain.Personaje;
 import Domain.Teclado;
 import java.net.URL;
@@ -22,15 +23,17 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-//   Archivos archivo = new Archivos();
+
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva =10;  
-    //             
-    int TamañoColumnaCueva =10;
-            //Integer.parseInt((String) tamaño.get(1));              
+    int TamañoFilaCueva =20;
+//            Integer.parseInt((String) tamaño.get(0));      
+//                 
+    int TamañoColumnaCueva =20;
+//            Integer.parseInt((String) tamaño.get(1));    
+            //          
     Auxiliar auxiliar = new Auxiliar();
     int tamañoImagenes = 100;
-    double tamañoDespalzamiento = 0.1;
+    double tamañoDespalzamiento = 0.05;
     int posX = 0;
     int posY = 0;
     Cueva cueva = new Cueva(655, 575, "Plana");
@@ -65,6 +68,7 @@ public class FXMLDocumentController implements Initializable {
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
+                    
                     double posicionV;
                     posicionV = scrollPricnipal.getVvalue();
 
@@ -153,9 +157,10 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
             anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
+            
         }
 
     }
@@ -163,7 +168,8 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-     
+//        Archivos archivo = new Archivos();
+//        archivo.escribir();
     }
 
 }
