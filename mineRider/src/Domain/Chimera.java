@@ -132,7 +132,7 @@ public class Chimera implements Runnable{
           
           transitionPersonaje.setDuration(Duration.seconds(5));
        
-        transitionPersonaje.setToY(posicionZ);
+        transitionPersonaje.setToX(posicionZ);
          transitionPersonaje.setNode(imagen);
          
 //         transitionPersonaje.setAutoReverse(true);

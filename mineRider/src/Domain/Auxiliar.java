@@ -13,10 +13,10 @@ import javafx.scene.image.ImageView;
  */
 public class Auxiliar {
 
-    MatrizEstado matrizEstado = new MatrizEstado();
+    MatrizAdaptada matrizEstado = new MatrizAdaptada();
     Coordenadas matriz[][] = matrizEstado.enviaMatriz(matrizEstado.enviarCoordenadas());
     Coordenadas cordenadas;
-    Matriz matrix= new Matriz();
+    MatrizEstado matrix= new MatrizEstado();
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
         matrix.actualizarPosicion(1, 0, 0);
@@ -44,11 +44,10 @@ public class Auxiliar {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
         cordenadas = matriz[a][b];
-
+        
         int x = cordenadas.getX();
         int y = cordenadas.getY();
         matrix.actualizarPosicion(2, a, b);
-         matrix.mostrarMatrizConsola();
         ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
         imagenZombie.setFitHeight(tamañoImagenes);
         imagenZombie.setFitWidth(tamañoImagenes);
@@ -69,7 +68,7 @@ public class Auxiliar {
         int b=(int) (Math.random() * tamañoColumna - 1);
         cordenadas = matriz[a][b];
         matrix.actualizarPosicion(3, a, b);
-        matrix.mostrarMatrizConsola();
+
         int x = cordenadas.getX();
         int y = cordenadas.getY();
 
@@ -79,4 +78,30 @@ public class Auxiliar {
 //        chimera.run();
         return imagenChimera;
     }
+     public ImageView crearPiedra(int tamañoImagenes, int tamañoColumna) {
+        ImageView imagenPiedra = new ImageView("Imagenes/images.jpg");
+        imagenPiedra.setFitHeight(tamañoImagenes);
+        imagenPiedra.setFitWidth(tamañoImagenes);
+        int a=(int) (Math.random() * tamañoColumna - 1);
+        int b= (int) (Math.random() * tamañoColumna - 1);
+        cordenadas = matriz[a][b];
+        matrix.actualizarPosicion(9, a, b);
+//        matrix.mostrarMatrizConsola();
+        int x = cordenadas.getX();
+        int y = cordenadas.getY();
+
+       imagenPiedra.setLayoutX(x);
+        imagenPiedra.setLayoutY(y);
+
+        return imagenPiedra;
+    }
+
+public MatrizEstado enviarMatrizEstado(){
+
+  matrix.mostrarMatrizConsola();
+        return matrix;
+    
+    
+}
+     
 }
