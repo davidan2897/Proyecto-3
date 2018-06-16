@@ -125,7 +125,7 @@ public class Chimera implements Runnable{
     public void run() {
         int posicionZ =0;
         boolean estado=true;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) {
             
         
          TranslateTransition transitionPersonaje = new TranslateTransition(); 
@@ -135,8 +135,8 @@ public class Chimera implements Runnable{
         transitionPersonaje.setToX(posicionZ);
          transitionPersonaje.setNode(imagen);
          
-//         transitionPersonaje.setAutoReverse(true);
-//         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
+         transitionPersonaje.setAutoReverse(true);
+         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
          transitionPersonaje.play();
          posicionZ-=100;
           

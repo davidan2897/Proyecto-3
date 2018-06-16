@@ -20,7 +20,7 @@ public class MatrizAdaptada {
 
     public MatrizAdaptada() {
         
-        this.matriz = new Coordenadas[5][5];
+        this.matriz = new Coordenadas[20][20];
     }
 
     public String enviarCoordenadas() {

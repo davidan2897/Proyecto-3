@@ -27,15 +27,15 @@ public class FXMLDocumentController implements Initializable {
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
     MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 5;
+    int TamañoFilaCueva = 20;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva = 5;
+    int TamañoColumnaCueva = 20;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
     Auxiliar auxiliar = new Auxiliar();
     int tamañoImagenes = 100;
-    double tamañoDespalzamiento = 0.05;
+    double tamañoDespalzamiento = 0.06;
     int posX = 0;
     int posY = 0;
     int x = 0;
@@ -75,9 +75,9 @@ public class FXMLDocumentController implements Initializable {
             switch (e.getCode()) {
                 case UP:
                     posicionV = scrollPricnipal.getVvalue();
-                    System.out.println(y);
+                        if(y!=0)
                     if (matrixEstado.getMatriz()[y - 1][x] == posicionVacio) {
-                        y -= 1;
+                        y -= 1;    
                         matrixEstado.actualizarPosicion(1, y, x);
                         matrixEstado.actualizarPosicion(posicionVacio, y + 1, x);
                         matrixEstado.mostrarMatrizConsola();
@@ -94,9 +94,11 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case DOWN:
-                    System.out.println(y);
+                  
                      posicionV = scrollPricnipal.getVvalue();
+                     if(y!=TamañoColumnaCueva-1)
                     if (matrixEstado.getMatriz()[y + 1][x] == posicionVacio) {
+
                         y += 1;
                         matrixEstado.actualizarPosicion(1, y, x);
                         matrixEstado.actualizarPosicion(posicionVacio, y - 1, x);
@@ -115,8 +117,9 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case LEFT:
-                    System.out.println(x);
+
                      posicionH = scrollPricnipal.getHvalue();
+                     if(x!=0)
                     if (matrixEstado.getMatriz()[y][x - 1] == posicionVacio) {
                         x -= 1;
                         matrixEstado.actualizarPosicion(1, y, x);
@@ -136,8 +139,9 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case RIGHT:
-                    System.out.println(x);
+          
                      posicionH = scrollPricnipal.getHvalue();
+                     if(x!=TamañoColumnaCueva-1)
                     if (matrixEstado.getMatriz()[y][x + 1] == posicionVacio) {
                         x += 1;
                         matrixEstado.actualizarPosicion(1, y, x);
@@ -188,17 +192,17 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 1+ (Math.random() *5); i++) {
+        for (int i = 0; i < 1+ (Math.random() *10); i++) {
              iv=auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva);
             if(iv!=null)
             anchorCountainerMap.getChildren().add(iv);
         }
-        for (int i = 0; i < 1+ (Math.random() *2); i++) {
+        for (int i = 0; i < 1+ (Math.random() *20); i++) {
              iv=auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
             if(iv!=null)
             anchorCountainerMap.getChildren().add(iv);
         }
-        for (int i = 0; i < 1+ (Math.random() *10); i++) {
+        for (int i = 0; i < 1+ (Math.random() *30); i++) {
            iv=auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
             if(iv!=null)
             anchorCountainerMap.getChildren().add(iv);

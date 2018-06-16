@@ -50,14 +50,17 @@ public class Auxiliar {
         int x = cordenadas.getX();
         int y = cordenadas.getY();
         matrix.actualizarPosicion(2, a, b);
-        ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
-        imagenZombie.setFitHeight(tamañoImagenes);
-        imagenZombie.setFitWidth(tamañoImagenes);
-        imagenZombie.setLayoutX(x);
-        imagenZombie.setLayoutY(y);
-
-//     
-         return imagenZombie;
+            ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
+            imagenZombie.setFitHeight(tamañoImagenes);
+            imagenZombie.setFitWidth(tamañoImagenes);
+            imagenZombie.setLayoutX(x);
+            imagenZombie.setLayoutY(y);
+//        Zombie zombie = new Zombie("", n, a, n, a, n, "", imagenZombie);
+//        zombie.run();
+//        Zombie zombie = new Zombie("", n, a, n, a, n, "", imagenZombie);
+          Zombie zombie1 = new Zombie("", n, a, n, a, n, "", imagenZombie);
+         zombie1.run();
+            return imagenZombie;
         }}
 //        zombie.run();
        return null;
@@ -80,8 +83,8 @@ public class Auxiliar {
 
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);
-//        Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
-//        chimera.run();
+        Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
+        chimera.run();
         return imagenChimera;
            }}
           return null;

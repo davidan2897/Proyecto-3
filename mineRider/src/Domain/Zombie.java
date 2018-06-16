@@ -103,14 +103,7 @@ public class Zombie implements Runnable{
         this.alcance = alcance;
     }
 
-    public Zombie(String nombre, int posicion, int ataque, int defensa, double retraso, int alcance) {
-        this.nombre = nombre;
-        this.posicion = posicion;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.retraso = retraso;
-        this.alcance = alcance;
-    }
+ 
 
     @Override
     public void run() {
@@ -125,8 +118,8 @@ public class Zombie implements Runnable{
         transitionPersonaje.setToX(posicionZ);
          transitionPersonaje.setNode(imagen);
          
-//         transitionPersonaje.setAutoReverse(true);
-//         transitionPersonaje.setCycleCount(Animatio n.INDEFINITE);
+         transitionPersonaje.setAutoReverse(true);
+         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
          transitionPersonaje.play();
          posicionZ-=100;
            
