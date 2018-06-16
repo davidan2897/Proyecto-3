@@ -1,9 +1,11 @@
 
+import Domain.Archivos;
 import Domain.Auxiliar;
 import Domain.Cueva;
 import Domain.MatrizEstado;
 import Domain.Personaje;
 import Domain.Teclado;
+import Domain.Zombie;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,19 +23,19 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-
+//    Archivos archivo = new Archivos();
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
     MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 10;
+    int TamañoFilaCueva = 5;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva = 10;
+    int TamañoColumnaCueva = 5;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
     Auxiliar auxiliar = new Auxiliar();
     int tamañoImagenes = 100;
-    double tamañoDespalzamiento = 0.15;
+    double tamañoDespalzamiento = 0.05;
     int posX = 0;
     int posY = 0;
     int x = 0;
@@ -73,6 +75,7 @@ public class FXMLDocumentController implements Initializable {
             switch (e.getCode()) {
                 case UP:
                     posicionV = scrollPricnipal.getVvalue();
+                    System.out.println(y);
                     if (matrixEstado.getMatriz()[y - 1][x] == posicionVacio) {
                         y -= 1;
                         matrixEstado.actualizarPosicion(1, y, x);
@@ -91,6 +94,7 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case DOWN:
+                    System.out.println(y);
                      posicionV = scrollPricnipal.getVvalue();
                     if (matrixEstado.getMatriz()[y + 1][x] == posicionVacio) {
                         y += 1;
@@ -111,6 +115,7 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case LEFT:
+                    System.out.println(x);
                      posicionH = scrollPricnipal.getHvalue();
                     if (matrixEstado.getMatriz()[y][x - 1] == posicionVacio) {
                         x -= 1;
@@ -131,6 +136,7 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case RIGHT:
+                    System.out.println(x);
                      posicionH = scrollPricnipal.getHvalue();
                     if (matrixEstado.getMatriz()[y][x + 1] == posicionVacio) {
                         x += 1;
@@ -166,7 +172,7 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-
+    ImageView iv;
         ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
         for (int r = 0; r < TamañoFilaCueva; r++) {
             for (int c = 0; c < TamañoColumnaCueva; c++) {
@@ -182,14 +188,26 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
 
-        for (int i = 0; i < 2; i++) {
-            anchorCountainerMap.getChildren().add(auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva));
-            anchorCountainerMap.getChildren().add(auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva));
-            anchorCountainerMap.getChildren().add(auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva));
-
+        for (int i = 0; i < 1+ (Math.random() *5); i++) {
+             iv=auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva);
+            if(iv!=null)
+            anchorCountainerMap.getChildren().add(iv);
+        }
+        for (int i = 0; i < 1+ (Math.random() *2); i++) {
+             iv=auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
+            if(iv!=null)
+            anchorCountainerMap.getChildren().add(iv);
+        }
+        for (int i = 0; i < 1+ (Math.random() *10); i++) {
+           iv=auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
+            if(iv!=null)
+            anchorCountainerMap.getChildren().add(iv);
         }
         matrixEstado = auxiliar.enviarMatrizEstado();
     }
+
+        
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -23,7 +23,7 @@ public ArrayList leerJson(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:C:\\Users\\Berny\\Desktop\\Nueva carpeta (2)\\prueba.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Desktop\\Nueva carpeta (2)\\prueba.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -65,7 +65,7 @@ public void escribir(){
 
  
 
-            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\Berny\\Desktop\\Nueva carpeta (2)\\mineRider\\prueba.json");
+            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\Berny\\Desktop\\Nueva carpeta (2)\\prueba.json");
 
             jsonFileWriter.write(jsonObject.toJSONString());
 

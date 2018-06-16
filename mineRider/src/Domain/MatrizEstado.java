@@ -2,7 +2,6 @@ package Domain;
 
 
 public class MatrizEstado {
-    private static MatrizEstado instance;
     private int matriz[][];
 
     public int[][] getMatriz() {
@@ -12,16 +11,9 @@ public class MatrizEstado {
     public void setMatriz(int[][] matriz) {
         this.matriz = matriz;
     }
-    
-    public static MatrizEstado getInstance() {
-        if(instance==null){
-            instance=new MatrizEstado();
-        }
-        return instance;
-    }
-    
+       
     public MatrizEstado(){
-        this.matriz = new int[10][10];
+        this.matriz = new int[5][5];
     }
     
     public void actualizarPosicion(int elemento, int posicionX, int posicionY){

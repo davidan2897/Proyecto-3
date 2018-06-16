@@ -43,8 +43,10 @@ public class Auxiliar {
     public ImageView crearZombie(int tamañoImagenes, int tamañoColumna) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
+        int n=1;
         cordenadas = matriz[a][b];
-        
+        if(a!=0 && b!=0){
+        if(matrix.getMatriz()[a][b]==0){
         int x = cordenadas.getX();
         int y = cordenadas.getY();
         matrix.actualizarPosicion(2, a, b);
@@ -54,10 +56,11 @@ public class Auxiliar {
         imagenZombie.setLayoutX(x);
         imagenZombie.setLayoutY(y);
 
-        Zombie zombie = new Zombie("zombie", 1, 5, 10, 2.0, 1, "", imagenZombie);
-        
+//     
+         return imagenZombie;
+        }}
 //        zombie.run();
-        return imagenZombie;
+       return null;
     }
 
     public ImageView crearChimera(int tamañoImagenes, int tamañoColumna) {
@@ -66,7 +69,10 @@ public class Auxiliar {
         imagenChimera.setFitWidth(tamañoImagenes);
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
+        
         cordenadas = matriz[a][b];
+           if(a!=0 && b!=0){
+               if(matrix.getMatriz()[a][b]==0){
         matrix.actualizarPosicion(3, a, b);
 
         int x = cordenadas.getX();
@@ -74,9 +80,11 @@ public class Auxiliar {
 
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);
-        Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
+//        Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
 //        chimera.run();
         return imagenChimera;
+           }}
+          return null;
     }
      public ImageView crearPiedra(int tamañoImagenes, int tamañoColumna) {
         ImageView imagenPiedra = new ImageView("Imagenes/images.jpg");
@@ -85,6 +93,8 @@ public class Auxiliar {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b= (int) (Math.random() * tamañoColumna - 1);
         cordenadas = matriz[a][b];
+           if(a!=0 && b!=0){
+               if(matrix.getMatriz()[a][b]==0){
         matrix.actualizarPosicion(9, a, b);
 //        matrix.mostrarMatrizConsola();
         int x = cordenadas.getX();
@@ -94,6 +104,8 @@ public class Auxiliar {
         imagenPiedra.setLayoutY(y);
 
         return imagenPiedra;
+               }}
+           return null;
     }
 
 public MatrizEstado enviarMatrizEstado(){
