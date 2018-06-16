@@ -5,6 +5,7 @@
  */
 package Domain;
 
+import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 
 /**
@@ -12,14 +13,14 @@ import javafx.scene.image.ImageView;
  * @author David
  */
 public class Auxiliar {
-
-    MatrizAdaptada matrizEstado = new MatrizAdaptada();
-    Coordenadas matriz[][] = matrizEstado.enviaMatriz(matrizEstado.enviarCoordenadas());
+    ArrayList<Zombie> arrayZombies = new ArrayList<>();
+    MatrizAdaptada matrizCoordenadas = new MatrizAdaptada();
+    Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
     Coordenadas cordenadas;
-    MatrizEstado matrix= new MatrizEstado();
+//    MatrizEstado matrix= new MatrizEstado();
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
-        matrix.actualizarPosicion(1, 0, 0);
+        MatrizEstado.getInstance().actualizarPosicion(1, 0, 0);
        
         
     String s = "";
@@ -40,30 +41,30 @@ public class Auxiliar {
 
     }
 
-    public ImageView crearZombie(int tamañoImagenes, int tamañoColumna) {
+    public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
-        int n=1;
+        int n=0;
         cordenadas = matriz[a][b];
         if(a!=0 && b!=0){
-        if(matrix.getMatriz()[a][b]==0){
+        if(MatrizEstado.getInstance().getMatriz()[a][b]==0){
+        a=(int) (Math.random() * tamañoColumna - 1);
+        b=(int) (Math.random() * tamañoColumna - 1);
+        }
         int x = cordenadas.getX();
         int y = cordenadas.getY();
-        matrix.actualizarPosicion(2, a, b);
+        MatrizEstado.getInstance().actualizarPosicion(2, a, b);
             ImageView imagenZombie = new ImageView("Imagenes/Zombie.gif");
             imagenZombie.setFitHeight(tamañoImagenes);
             imagenZombie.setFitWidth(tamañoImagenes);
             imagenZombie.setLayoutX(x);
             imagenZombie.setLayoutY(y);
-//        Zombie zombie = new Zombie("", n, a, n, a, n, "", imagenZombie);
-//        zombie.run();
-//        Zombie zombie = new Zombie("", n, a, n, a, n, "", imagenZombie);
-          Zombie zombie1 = new Zombie("", n, a, n, a, n, "", imagenZombie);
-         zombie1.run();
-            return imagenZombie;
-        }}
-//        zombie.run();
-       return null;
+          Zombie zombie = new Zombie("zombie"+(n), n, a, n, a, n, "", imagenZombie);
+          arrayZombies.add(zombie);
+      
+        
+        }
+         return arrayZombies;
     }
 
     public ImageView crearChimera(int tamañoImagenes, int tamañoColumna) {
@@ -75,8 +76,8 @@ public class Auxiliar {
         
         cordenadas = matriz[a][b];
            if(a!=0 && b!=0){
-               if(matrix.getMatriz()[a][b]==0){
-        matrix.actualizarPosicion(3, a, b);
+               if(MatrizEstado.getInstance().getMatriz()[a][b]==0){
+       MatrizEstado.getInstance().actualizarPosicion(3, a, b);
 
         int x = cordenadas.getX();
         int y = cordenadas.getY();
@@ -97,8 +98,8 @@ public class Auxiliar {
         int b= (int) (Math.random() * tamañoColumna - 1);
         cordenadas = matriz[a][b];
            if(a!=0 && b!=0){
-               if(matrix.getMatriz()[a][b]==0){
-        matrix.actualizarPosicion(9, a, b);
+               if(MatrizEstado.getInstance().getMatriz()[a][b]==0){
+        MatrizEstado.getInstance().actualizarPosicion(9, a, b);
 //        matrix.mostrarMatrizConsola();
         int x = cordenadas.getX();
         int y = cordenadas.getY();
@@ -113,8 +114,8 @@ public class Auxiliar {
 
 public MatrizEstado enviarMatrizEstado(){
 
-  matrix.mostrarMatrizConsola();
-        return matrix;
+  MatrizEstado.getInstance().mostrarMatrizConsola();
+        return MatrizEstado.getInstance();
     
     
 }

@@ -109,7 +109,6 @@ public class Zombie implements Runnable{
     public void run() {
         int posicionZ =0;
         for (int i = 0; i < 2; i++) {
-            
         
          TranslateTransition transitionPersonaje = new TranslateTransition(); 
           
