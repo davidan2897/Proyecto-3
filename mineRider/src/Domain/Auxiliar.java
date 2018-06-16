@@ -42,15 +42,15 @@ public class Auxiliar {
     }
 
     public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
+        for (int i = 0; i < 1+(Math.random()*20); i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
-        int n=0;
-        cordenadas = matriz[a][b];
-        if(a!=0 && b!=0){
-        if(MatrizEstado.getInstance().getMatriz()[a][b]==0){
+
+        if(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){
         a=(int) (Math.random() * tamañoColumna - 1);
         b=(int) (Math.random() * tamañoColumna - 1);
         }
+        cordenadas = matriz[a][b];
         int x = cordenadas.getX();
         int y = cordenadas.getY();
         MatrizEstado.getInstance().actualizarPosicion(2, a, b);
@@ -59,10 +59,8 @@ public class Auxiliar {
             imagenZombie.setFitWidth(tamañoImagenes);
             imagenZombie.setLayoutX(x);
             imagenZombie.setLayoutY(y);
-          Zombie zombie = new Zombie("zombie"+(n), n, a, n, a, n, "", imagenZombie);
+          Zombie zombie = new Zombie("zombie"+(i), a, a, a, a, a, "", imagenZombie);
           arrayZombies.add(zombie);
-      
-        
         }
          return arrayZombies;
     }

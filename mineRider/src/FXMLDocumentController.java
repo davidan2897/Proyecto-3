@@ -45,6 +45,7 @@ public class FXMLDocumentController implements Initializable {
     double posicionV;
     double posicionH;
     int posicionVacio = 0;
+    ImageView imageViewAuxiliar;
    
 
     ImageView imagenPersonaje = new ImageView("Imagenes/ash2.jpg");
@@ -177,8 +178,6 @@ public class FXMLDocumentController implements Initializable {
 
     //Posiciones iniciales
     public void Comenzar(ActionEvent event) {
-    ImageView iv;
-
         ImageView[][] ImagesMatriz = new ImageView[TamañoFilaCueva][TamañoColumnaCueva];
         for (int r = 0; r < TamañoFilaCueva; r++) {
             for (int c = 0; c < TamañoColumnaCueva; c++) {
@@ -193,26 +192,26 @@ public class FXMLDocumentController implements Initializable {
         anchorCountainerMap.getChildren().addAll(imagenPersonaje);
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
-
-//        for (int i = 0; i < 1+ (Math.random() *10); i++) {
-//            ArrayZombie =auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva);
-//             iv=ArrayZombie.get(i).getImagen();
-//             System.out.println(ArrayZombie.get(i).getNombre());
-//             anchorCountainerMap.getChildren().add(iv);
-//        }
+        insertarZombies();
         for (int i = 0; i < 1+ (Math.random() *20); i++) {
-             iv=auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
-            if(iv!=null)
-            anchorCountainerMap.getChildren().add(iv);
+             imageViewAuxiliar=auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
+            if(imageViewAuxiliar!=null)
+            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
         }
         for (int i = 0; i < 1+ (Math.random() *30); i++) {
-           iv=auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
-            if(iv!=null)
-            anchorCountainerMap.getChildren().add(iv);
+           imageViewAuxiliar=auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
+            if(imageViewAuxiliar!=null)
+            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
         }
-//       matrixEstado = auxiliar.enviarMatrizEstado();
     }
+    public void insertarZombies() {
+        ArrayZombie = auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva);
+        for (int i = 0; i < ArrayZombie.size(); i++) {
+            imageViewAuxiliar = ArrayZombie.get(i).getImagen();
+            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
+        }
 
+    }
         
     
 
