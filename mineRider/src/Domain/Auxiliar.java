@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
  */
 public class Auxiliar {
     ArrayList<Zombie> arrayZombies = new ArrayList<>();
-    MatrizAdaptada matrizCoordenadas = new MatrizAdaptada();
+    MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
     Coordenadas cordenadas;
 //    MatrizEstado matrix= new MatrizEstado();
@@ -59,7 +59,7 @@ public class Auxiliar {
             imagenZombie.setFitWidth(tamañoImagenes);
             imagenZombie.setLayoutX(x);
             imagenZombie.setLayoutY(y);
-          Zombie zombie = new Zombie("zombie"+(i), a, a, a, a, a, "", imagenZombie);
+            Zombie zombie = new Zombie("zombie"+(i), x, y, a, a, a, a, "izquierda", imagenZombie);
           arrayZombies.add(zombie);
         }
          return arrayZombies;

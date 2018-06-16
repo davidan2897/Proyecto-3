@@ -6,19 +6,19 @@ import java.util.StringTokenizer;
 
 
 
-public class MatrizAdaptada {
+public class MatrizCoordenadas {
     
-    private static MatrizAdaptada instance;
+    private static MatrizCoordenadas instance;
     private Coordenadas matriz[][];
 
-    public static MatrizAdaptada getInstance() {
+    public static MatrizCoordenadas getInstance() {
         if (instance == null) {
-            instance = new MatrizAdaptada();
+            instance = new MatrizCoordenadas();
         }
         return instance;
     }
 
-    public MatrizAdaptada() {
+    public MatrizCoordenadas() {
         
         this.matriz = new Coordenadas[20][20];
     }

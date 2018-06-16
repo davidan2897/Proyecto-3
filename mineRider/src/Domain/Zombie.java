@@ -7,7 +7,6 @@ package Domain;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -18,7 +17,8 @@ import javafx.util.Duration;
 public class Zombie implements Runnable{
 
    private String nombre;
-   private int posicion;
+   private int posicionX;
+   private int posicionY;
    private int ataque;
    private int defensa;
    private double retraso;
@@ -41,9 +41,10 @@ public class Zombie implements Runnable{
         this.imagen = imagen;
     }
 
-    public Zombie(String nombre, int posicion, int ataque, int defensa, double retraso, int alcance, String direccion, ImageView imagen) {
+    public Zombie(String nombre, int posicionX,int posicionY, int ataque, int defensa, double retraso, int alcance, String direccion, ImageView imagen) {
         this.nombre = nombre;
-        this.posicion = posicion;
+        this.posicionX = posicionX;
+        this.posicionY=posicionY;
         this.ataque = ataque;
         this.defensa = defensa;
         this.retraso = retraso;
@@ -63,13 +64,23 @@ public class Zombie implements Runnable{
         this.nombre = nombre;
     }
 
-    public int getPosicion() {
-        return posicion;
+    public int getPosicionX() {
+        return posicionX;
     }
 
-    public void setPosicion(int posicion) {
-        this.posicion = posicion;
+    public void setPosicionX(int posicionX) {
+        this.posicionX = posicionX;
     }
+
+    public int getPosicionY() {
+        return posicionY;
+    }
+
+    public void setPosicionY(int posicionY) {
+        this.posicionY = posicionY;
+    }
+
+
 
     public int getAtaque() {
         return ataque;

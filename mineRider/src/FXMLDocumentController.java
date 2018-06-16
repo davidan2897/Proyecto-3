@@ -211,7 +211,8 @@ public class FXMLDocumentController implements Initializable {
             anchorCountainerMap.getChildren().add(imageViewAuxiliar);
         }
 
-    }
+    }//fin insertarZombies
+    
         
     
 
