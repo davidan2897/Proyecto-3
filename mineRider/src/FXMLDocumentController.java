@@ -1,6 +1,6 @@
 
 import Domain.Archivos;
-import Domain.Auxiliar;
+import Domain.CrearObjetos;
 import Domain.Cueva;
 import Domain.MatrizEstado;
 import Domain.Personaje;
@@ -35,7 +35,7 @@ public class FXMLDocumentController implements Initializable {
     int TamañoColumnaCueva = 20;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
-    Auxiliar auxiliar = new Auxiliar();
+    CrearObjetos auxiliar = new CrearObjetos();
     int tamañoImagenes = 100;
     double tamañoDespalzamiento = 0.06;
     int posX = 0;

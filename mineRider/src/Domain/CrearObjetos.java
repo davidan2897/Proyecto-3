@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
  *
  * @author David
  */
-public class Auxiliar {
+public class CrearObjetos {
     ArrayList<Zombie> arrayZombies = new ArrayList<>();
     MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
@@ -60,7 +60,7 @@ public class Auxiliar {
             imagenZombie.setLayoutX(x);
             imagenZombie.setLayoutY(y);
             Zombie zombie = new Zombie("zombie"+(i), x, y, a, a, a, a, "izquierda", imagenZombie);
-          arrayZombies.add(zombie);
+            arrayZombies.add(zombie);
         }
          return arrayZombies;
     }
@@ -110,12 +110,5 @@ public class Auxiliar {
            return null;
     }
 
-public MatrizEstado enviarMatrizEstado(){
-
-  MatrizEstado.getInstance().mostrarMatrizConsola();
-        return MatrizEstado.getInstance();
-    
-    
-}
      
 }
