@@ -5,6 +5,7 @@
  */
 package Domain;
 
+import java.util.ArrayList;
 import javafx.scene.image.ImageView;
 
 /**
@@ -115,29 +116,77 @@ MovimientosObjetos movimientosObjetos = new MovimientosObjetos();
 
     @Override
     public void run() {
-//        int posicionZ =0;
-//        for (int i = 0; i < 2; i++) {
-//        
-//         TranslateTransition transitionPersonaje = new TranslateTransition(); 
-//          
-//          transitionPersonaje.setDuration(Duration.seconds(5));
-//       
-//        transitionPersonaje.setToX(posicionZ);
-//         transitionPersonaje.setNode(imagen);
-//         
-//         transitionPersonaje.setAutoReverse(true);
-//         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
-//         transitionPersonaje.play();
-//         posicionZ-=100;
-//        
+int x;
+int y;
+        for (int j = 0; j < 1; j++) {
+            
+        
+    
 for (int i = 0; i <1; i++) {
+    ArrayList<String> Arraymovimientos = movimientosObjetos.elegirDireccion();
+   String posicion= Arraymovimientos.get((int)+(Math.random()*Arraymovimientos.size()));
+     System.out.println(posicion);
+     
+    switch (posicion) {
+        case "arriba":
+             x = this.getPosicionY();
+             y = this.getPosicionX();
+             System.out.println(this.getPosicionX()+"  "+this.getPosicionY()); 
+            if (y != 0)
+                if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 0) {
+                    y -= 1;
+                    MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                    MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
+           movimientosObjetos.movimientoArriba(imagen);
+                }
+            break;
+        case "abajo":
+            x = this.getPosicionY();
+            y = this.getPosicionX();
+            System.out.println(this.getPosicionX()+"  "+this.getPosicionY()); 
+             if(y!=MatrizEstado.getInstance().enviarTamaño()-1)
+                    if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 0) {
 
-      movimientosObjetos.mover( imagen);       
+                        y += 1;
+                       MatrizEstado.getInstance().actualizarPosicion(2, x, y);
+                        MatrizEstado.getInstance().actualizarPosicion(0, y-1, x);
 
-    }
+            movimientosObjetos.movimientoAbajo(imagen);
+                    }
+            break;
+        case "Derecha":
+             x = this.getPosicionY();
+             y = this.getPosicionX();
+             System.out.println(this.getPosicionX()+"  "+this.getPosicionY()); 
+            if(x!=MatrizEstado.getInstance().enviarTamaño()-1)
+                    if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 0) {
+                        x += 1;
+                        MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                        MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
+           
+            movimientosObjetos.movimientoDerecha(imagen);
+                    }
+            break;
+        case"izquierda":
+             x = this.getPosicionY();
+             y = this.getPosicionX();
+                      System.out.println(this.getPosicionX()+"  "+this.getPosicionY()); 
+         if(x!=0)
+                    if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 0) {
+                        x -= 1;
+                        MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                       MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
+            movimientosObjetos.movimientoIzquierda(imagen);
+            break;  
+}
+    }//fin swich
   
         
-    }    
+    }//fin for
+        
     }
+    }
+    }//fin run
+
     
 

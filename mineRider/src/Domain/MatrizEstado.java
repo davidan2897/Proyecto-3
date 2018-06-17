@@ -21,7 +21,7 @@ public class MatrizEstado {
     }
        
     public MatrizEstado(){
-        this.matriz = new int[10][10];
+        this.matriz = new int[5][5];
     }
     
     public void actualizarPosicion(int elemento, int posicionX, int posicionY){
@@ -37,5 +37,9 @@ public class MatrizEstado {
             valores+="\n";
         }
         System.out.println(valores);
+    }
+    public int enviarTamaño(){
+        return 5;
+        
     }
 }

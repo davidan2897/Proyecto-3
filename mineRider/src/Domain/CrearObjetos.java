@@ -42,7 +42,7 @@ public class CrearObjetos {
     }
 
     public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
 
@@ -59,7 +59,7 @@ public class CrearObjetos {
             imagenZombie.setFitWidth(tamañoImagenes);
             imagenZombie.setLayoutX(x);
             imagenZombie.setLayoutY(y);
-            Zombie zombie = new Zombie("zombie"+(i), x, y, a, a, a, a, "izquierda", imagenZombie);
+            Zombie zombie = new Zombie("zombie"+(i), a, b, a, a, a, a, "izquierda", imagenZombie);
             arrayZombies.add(zombie);
         }
          return arrayZombies;
@@ -83,7 +83,7 @@ public class CrearObjetos {
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);
         Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
-        chimera.run();
+//        chimera.run();
         return imagenChimera;
            }}
           return null;
