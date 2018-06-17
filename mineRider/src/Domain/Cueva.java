@@ -14,11 +14,13 @@ public class Cueva {
 private int largo;
 private int ancho;
 private String tipo;
+private Thread hilo;
 
-    public Cueva(int largo, int ancho, String tipo) {
+    public Cueva(int largo, int ancho, String tipo,Thread hilo) {
         this.largo = largo;
         this.ancho = ancho;
         this.tipo = tipo;
+        this.hilo = hilo;
     }
 
     public int getLargo() {

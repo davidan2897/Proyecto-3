@@ -29,10 +29,10 @@ public class FXMLDocumentController implements Initializable {
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
 //    MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 5;
+    int TamañoFilaCueva = 8;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva =5;
+    int TamañoColumnaCueva =8;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
     CrearObjetos auxiliar = new CrearObjetos();
@@ -215,14 +215,15 @@ public class FXMLDocumentController implements Initializable {
 
     }//fin insertarZombies
     
-    public void empezarMovimientosZombies(){
- 
-         for (int i = 0; i < ArrayZombie.size(); i++) {
-     
-           ArrayZombie.get(i).run();
-         }
-        
-        
+    public void empezarMovimientosZombies() {
+        for (int j = 0; j < 1; j++) {
+
+            for (int i = 0; i < ArrayZombie.size(); i++) {
+
+                ArrayZombie.get(i).run();
+            }
+        }
+
     }   
     
 

@@ -42,11 +42,11 @@ public class CrearObjetos {
     }
 
     public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
 
-        if(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){
+      while(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){
         a=(int) (Math.random() * tamañoColumna - 1);
         b=(int) (Math.random() * tamañoColumna - 1);
         }

@@ -35,7 +35,7 @@ public class MovimientosObjetos {
     public void movimientoAbajo(ImageView o) {
 
         transitionObjetos = new TranslateTransition();
-        transitionObjetos.setDuration(Duration.seconds(10));
+        transitionObjetos.setDuration(Duration.seconds(2));
         transitionObjetos.setToY(100 + y);
         transitionObjetos.setNode((Node) o);
 //            transitionObjetos.setAutoReverse(true);
@@ -47,7 +47,7 @@ public class MovimientosObjetos {
     public void movimientoArriba(ImageView o) {
 
         transitionObjetos = new TranslateTransition();
-        transitionObjetos.setDuration(Duration.seconds(10));
+        transitionObjetos.setDuration(Duration.seconds(2));
         transitionObjetos.setToY(y - 100);
         transitionObjetos.setNode((Node) o);
 //              transitionObjetos.setAutoReverse(true);
@@ -60,7 +60,7 @@ public class MovimientosObjetos {
     public void movimientoDerecha(ImageView o) {
 
         transitionObjetos = new TranslateTransition();
-        transitionObjetos.setDuration(Duration.seconds(10));
+        transitionObjetos.setDuration(Duration.seconds(2));
         transitionObjetos.setToX(x + 100);
         transitionObjetos.setNode((Node) o);
 //            transitionObjetos.setAutoReverse(true);
@@ -73,7 +73,7 @@ public class MovimientosObjetos {
     public void movimientoIzquierda(ImageView o) {
 
         transitionObjetos = new TranslateTransition();
-        transitionObjetos.setDuration(Duration.seconds(10));
+        transitionObjetos.setDuration(Duration.seconds(2));
         transitionObjetos.setToX(x - 100);
         transitionObjetos.setNode((Node) o);
 //              transitionObjetos.setAutoReverse(true);
