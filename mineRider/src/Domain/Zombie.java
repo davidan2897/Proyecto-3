@@ -5,17 +5,14 @@
  */
 package Domain;
 
-import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 
 /**
  *
  * @author David
  */
 public class Zombie implements Runnable{
-
+MovimientosObjetos movimientosObjetos = new MovimientosObjetos();
    private String nombre;
    private int posicionX;
    private int posicionY;
@@ -118,28 +115,29 @@ public class Zombie implements Runnable{
 
     @Override
     public void run() {
-        int posicionZ =0;
-        for (int i = 0; i < 2; i++) {
-        
-         TranslateTransition transitionPersonaje = new TranslateTransition(); 
-          
-          transitionPersonaje.setDuration(Duration.seconds(5));
-       
-        transitionPersonaje.setToX(posicionZ);
-         transitionPersonaje.setNode(imagen);
-         
-         transitionPersonaje.setAutoReverse(true);
-         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
-         transitionPersonaje.play();
-         posicionZ-=100;
-           
-         
-        }
+//        int posicionZ =0;
+//        for (int i = 0; i < 2; i++) {
+//        
+//         TranslateTransition transitionPersonaje = new TranslateTransition(); 
 //          
-        
+//          transitionPersonaje.setDuration(Duration.seconds(5));
+//       
+//        transitionPersonaje.setToX(posicionZ);
+//         transitionPersonaje.setNode(imagen);
+//         
+//         transitionPersonaje.setAutoReverse(true);
+//         transitionPersonaje.setCycleCount(Animation.INDEFINITE);
+//         transitionPersonaje.play();
+//         posicionZ-=100;
+//        
+for (int i = 0; i < 1000; i++) {
+
+      movimientosObjetos.mover( imagen);       
+
+    }
   
         
-        
+    }    
     }
     
-}
+

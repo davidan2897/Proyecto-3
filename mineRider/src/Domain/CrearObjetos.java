@@ -42,7 +42,7 @@ public class CrearObjetos {
     }
 
     public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
-        for (int i = 0; i < 1+(Math.random()*20); i++) {
+        for (int i = 0; i < 10; i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
 
