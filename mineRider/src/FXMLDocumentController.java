@@ -1,5 +1,6 @@
 
 import Domain.Archivos;
+import Domain.Chimera;
 import Domain.CrearObjetos;
 import Domain.Cueva;
 import Domain.MatrizEstado;
@@ -25,19 +26,20 @@ import javafx.scene.layout.GridPane;
  */
 public class FXMLDocumentController implements Initializable {
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
+    ArrayList<Chimera>ArrayChimera = new ArrayList<>();
 //    Archivos archivo = new Archivos();
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
 //    MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 8;
+    int TamañoFilaCueva = 5;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva =8;
+    int TamañoColumnaCueva =5;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
     CrearObjetos auxiliar = new CrearObjetos();
     int tamañoImagenes = 100;
-    double tamañoDespalzamiento = 0.12;
+    double tamañoDespalzamiento = 0.06;
     int posX = 0;
     int posY = 0;
     int x = 0;
@@ -76,12 +78,15 @@ public class FXMLDocumentController implements Initializable {
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
+                     
                     posicionV = scrollPricnipal.getVvalue();
                         if(y!=0)
                     if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == posicionVacio) {
                         y -= 1;    
                         MatrizEstado.getInstance().actualizarPosicion(1, y, x);
                         MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y + 1, x);
+                        empezarMovimientosZombies();
+                        empezarMovimientosChimeras();
                        MatrizEstado.getInstance().mostrarMatrizConsola();
 
                         personaje.setDireccion("arriba");
@@ -96,14 +101,15 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case DOWN:
-                  
                      posicionV = scrollPricnipal.getVvalue();
                      if(y!=TamañoColumnaCueva-1)
                     if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == posicionVacio) {
 
                         y += 1;
-                       MatrizEstado.getInstance().actualizarPosicion(1, y, x);
+                        MatrizEstado.getInstance().actualizarPosicion(1, y, x);
                         MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y - 1, x);
+                        empezarMovimientosChimeras();
+                        empezarMovimientosZombies();
                         MatrizEstado.getInstance().mostrarMatrizConsola();
                        
 
@@ -119,13 +125,14 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case LEFT:
-
                      posicionH = scrollPricnipal.getHvalue();
                      if(x!=0)
                     if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == posicionVacio) {
                         x -= 1;
                         MatrizEstado.getInstance().actualizarPosicion(1, y, x);
                        MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y, x + 1);
+                        empezarMovimientosZombies();
+                        empezarMovimientosChimeras();
                        MatrizEstado.getInstance().mostrarMatrizConsola();
                        
 
@@ -141,13 +148,15 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case RIGHT:
-          
+                   
                      posicionH = scrollPricnipal.getHvalue();
                      if(x!=TamañoColumnaCueva-1)
                     if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == posicionVacio) {
                         x += 1;
                         MatrizEstado.getInstance().actualizarPosicion(1, y, x);
                         MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y, x - 1);
+                        empezarMovimientosChimeras();
+                        empezarMovimientosZombies();
                         MatrizEstado.getInstance().mostrarMatrizConsola();
                         
 
@@ -193,11 +202,7 @@ public class FXMLDocumentController implements Initializable {
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         button.setDisable(true);
         insertarZombies();
-        for (int i = 0; i < 1+ (Math.random() *20); i++) {
-             imageViewAuxiliar=auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
-            if(imageViewAuxiliar!=null)
-            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
-        }
+        insertarChimeras();
         for (int i = 0; i < 1+ (Math.random() *30); i++) {
            imageViewAuxiliar=auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
             if(imageViewAuxiliar!=null)
@@ -205,6 +210,7 @@ public class FXMLDocumentController implements Initializable {
         }
          MatrizEstado.getInstance().mostrarMatrizConsola();
          empezarMovimientosZombies();
+         empezarMovimientosChimeras();
     }
     public void insertarZombies() {
         ArrayZombie = auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva);
@@ -214,18 +220,32 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }//fin insertarZombies
-    
-    public void empezarMovimientosZombies() {
-        for (int j = 0; j < 1; j++) {
-
-            for (int i = 0; i < ArrayZombie.size(); i++) {
-
-                ArrayZombie.get(i).run();
-            }
+    public void insertarChimeras() {
+        ArrayChimera = auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
+        for (int i = 0; i < ArrayChimera.size(); i++) {
+            imageViewAuxiliar = ArrayChimera.get(i).getImagen();
+            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
         }
 
-    }   
+    }//fin insertarChimeras
     
+    public void empezarMovimientosZombies() {
+ 
+        for (int i = 0; i < ArrayZombie.size(); i++) {
+
+            ArrayZombie.get(i).run();
+        }
+
+    }
+    public void empezarMovimientosChimeras() {
+ 
+        for (int i = 0; i < ArrayChimera.size(); i++) {
+
+            ArrayChimera.get(i).run();
+        }
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

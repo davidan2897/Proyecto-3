@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
  */
 public class CrearObjetos {
     ArrayList<Zombie> arrayZombies = new ArrayList<>();
+    ArrayList<Chimera> arrayChimera = new ArrayList<>();
     MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
     Coordenadas cordenadas;
@@ -21,17 +22,7 @@ public class CrearObjetos {
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
         MatrizEstado.getInstance().actualizarPosicion(1, 0, 0);
-       
-        
-    String s = "";
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j <matriz[0].length; j++) {
-                s+=" ["+matriz[i][j].getX()+" "+matriz[i][j].getY()+"]";
-                   
-            }
-            s+="\n";
-        }
-        System.out.println(s);
+
         imagenPersonaje.setFitHeight(tamañoImagenes);
         imagenPersonaje.setFitWidth(tamañoImagenes);
 
@@ -42,7 +33,7 @@ public class CrearObjetos {
     }
 
     public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
 
@@ -65,29 +56,29 @@ public class CrearObjetos {
          return arrayZombies;
     }
 
-    public ImageView crearChimera(int tamañoImagenes, int tamañoColumna) {
+    public  ArrayList<Chimera> crearChimera(int tamañoImagenes, int tamañoColumna) {
+        for (int i = 0; i < 1; i++) {
+        int a=(int) (Math.random() * tamañoColumna - 1);
+        int b=(int) (Math.random() * tamañoColumna - 1);
+          while(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){
+        a=(int) (Math.random() * tamañoColumna - 1);
+        b=(int) (Math.random() * tamañoColumna - 1);
+        }
+        cordenadas = matriz[a][b];
+        int x = cordenadas.getX();
+        int y = cordenadas.getY();
+        MatrizEstado.getInstance().actualizarPosicion(3, a, b);
         ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
         imagenChimera.setFitHeight(tamañoImagenes);
         imagenChimera.setFitWidth(tamañoImagenes);
-        int a=(int) (Math.random() * tamañoColumna - 1);
-        int b=(int) (Math.random() * tamañoColumna - 1);
-        
-        cordenadas = matriz[a][b];
-           if(a!=0 && b!=0){
-               if(MatrizEstado.getInstance().getMatriz()[a][b]==0){
-       MatrizEstado.getInstance().actualizarPosicion(3, a, b);
-
-        int x = cordenadas.getX();
-        int y = cordenadas.getY();
-
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);
-        Chimera chimera = new Chimera("", x, y,0,0, 0, 0, 0, "", imagenChimera);
-//        chimera.run();
-        return imagenChimera;
-           }}
-          return null;
-    }
+        Chimera chimera = new Chimera("chimera"+(i), a, b,0,0, 0, 0, 0, "", imagenChimera);
+        arrayChimera.add(chimera);
+           }
+         return arrayChimera;
+    }//fin arrayChimera
+    
      public ImageView crearPiedra(int tamañoImagenes, int tamañoColumna) {
         ImageView imagenPiedra = new ImageView("Imagenes/images.jpg");
         imagenPiedra.setFitHeight(tamañoImagenes);

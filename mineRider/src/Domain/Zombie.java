@@ -24,7 +24,7 @@ public class Zombie implements Runnable {
     private int alcance;
     private String direccion;
     private ImageView imagen;
-    private Thread hilo;
+
 
     public String getDireccion() {
         return direccion;
