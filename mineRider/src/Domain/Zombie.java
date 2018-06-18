@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -24,7 +24,6 @@ public class Zombie implements Runnable {
     private int alcance;
     private String direccion;
     private ImageView imagen;
-
 
     public String getDireccion() {
         return direccion;
@@ -125,14 +124,16 @@ public class Zombie implements Runnable {
                     y = this.getPosicionX();
                     System.out.println("y " + y + "  " + "x " + x + this.getNombre());
                     if (y > 0) {
-                        if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 0) {
-                            y -= 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
-                            this.setPosicionX(y);
-                            MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
-                            MatrizEstado.getInstance().mostrarMatrizConsola();
-                            movimientosObjetos.movimientoArriba(imagen);
-                            System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                        if (MatrizEstado.getInstance().getMatriz()[y - 1][x] != 1) {
+                            if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 0) {
+                                y -= 1;
+                                MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                                this.setPosicionX(y);
+                                MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
+                                MatrizEstado.getInstance().mostrarMatrizConsola();
+                                movimientosObjetos.movimientoArriba(imagen);
+                                System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                            }
                         }
                     }
                     break;
@@ -140,17 +141,20 @@ public class Zombie implements Runnable {
                     x = this.getPosicionY();
                     y = this.getPosicionX();
                     System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+
                     if (y < MatrizEstado.getInstance().enviarTamaño() - 1) {
-                        if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 0) {
+                        if (MatrizEstado.getInstance().getMatriz()[y + 1][x] != 1) {
+                            if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 0) {
 
-                            y += 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
-                            this.setPosicionX(y);
-                            MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
-                            MatrizEstado.getInstance().mostrarMatrizConsola();
+                                y += 1;
+                                MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                                this.setPosicionX(y);
+                                MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
+                                MatrizEstado.getInstance().mostrarMatrizConsola();
 
-                            movimientosObjetos.movimientoAbajo(imagen);
-                            System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                                movimientosObjetos.movimientoAbajo(imagen);
+                                System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                            }
                         }
                     }
                     break;
@@ -159,14 +163,16 @@ public class Zombie implements Runnable {
                     y = this.getPosicionX();
                     System.out.println("y " + y + "  " + "x " + x + this.getNombre());
                     if (x < MatrizEstado.getInstance().enviarTamaño() - 1) {
-                        if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 0) {
-                            x = x + 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
-                            this.setPosicionY(x);
-                            MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
-                            MatrizEstado.getInstance().mostrarMatrizConsola();
-                            movimientosObjetos.movimientoDerecha(imagen);
-                            System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                        if (MatrizEstado.getInstance().getMatriz()[y][x + 1] != 1) {
+                            if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 0) {
+                                x = x + 1;
+                                MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                                this.setPosicionY(x);
+                                MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
+                                MatrizEstado.getInstance().mostrarMatrizConsola();
+                                movimientosObjetos.movimientoDerecha(imagen);
+                                System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                            }
                         }
                     }
                     break;
@@ -175,14 +181,16 @@ public class Zombie implements Runnable {
                     y = this.getPosicionX();
                     System.out.println("y " + y + "  " + "x " + x + this.getNombre());
                     if (x > 0) {
-                        if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 0) {
-                            x -= 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
-                            this.setPosicionY(x);
-                            MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
-                            MatrizEstado.getInstance().mostrarMatrizConsola();
-                            movimientosObjetos.movimientoIzquierda(imagen);
-                            System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                        if (MatrizEstado.getInstance().getMatriz()[y][x - 1] != 1) {
+                            if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 0) {
+                                x -= 1;
+                                MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                                this.setPosicionY(x);
+                                MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
+                                MatrizEstado.getInstance().mostrarMatrizConsola();
+                                movimientosObjetos.movimientoIzquierda(imagen);
+                                System.out.println("y " + y + "  " + "x " + x + this.getNombre());
+                            }
                         }
                     }
                     break;

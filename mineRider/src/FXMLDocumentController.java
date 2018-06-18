@@ -2,7 +2,6 @@
 import Domain.Archivos;
 import Domain.Chimera;
 import Domain.CrearObjetos;
-import Domain.Cueva;
 import Domain.MatrizEstado;
 import Domain.Personaje;
 import Domain.Teclado;
@@ -25,16 +24,17 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
+
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
-    ArrayList<Chimera>ArrayChimera = new ArrayList<>();
+    ArrayList<Chimera> ArrayChimera = new ArrayList<>();
 //    Archivos archivo = new Archivos();
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
 //    MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 20;
+    int TamañoFilaCueva = 5;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva =20;
+    int TamañoColumnaCueva = 5;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
     CrearObjetos auxiliar = new CrearObjetos();
@@ -47,16 +47,23 @@ public class FXMLDocumentController implements Initializable {
     double posicionV;
     double posicionH;
     int posicionVacio = 0;
-    ImageView imageViewAuxiliar;
-   
 
+    //Imagenes Personaje
+    //////////////////////////////////////////////////////////////
+    ImageView imageViewAuxiliar;
     ImageView imagenPersonaje = new ImageView("Imagenes/ash2.jpg");
     Image ImagenPersonajeIzquierda = new Image("Imagenes/ash3.jpg");
     Image ImagenPersonajeDerecha = new Image("Imagenes/ash1.jpg");
     Image ImagenPersonajeArriba = new Image("Imagenes/ash4.jpg");
     Image ImagenPersonajeAbajo = new Image("Imagenes/ash2.jpg");
-    Image ImagenPersonajePalaDerecha = new Image("Imagenes/pala.jpg");
-    Image ImagenPersonajePalaIzquierda = new Image("Imagenes/palaDerecha.jpg");
+    Image ImagenPersonajePalaIzquierda = new Image("Imagenes/ashPalaDerecha.png");
+    Image ImagenPersonajePalaDerecha = new Image("Imagenes/ashPalaIzquierda.png");
+    Image ImagenPersonajePalaArriba = new Image("Imagenes/ashPalaArriba.png");
+    Image ImagenPersonajePalaAbajo = new Image("Imagenes/ashPalaAbajo.png");
+    Image ImagenPersonajeEspadaIzquierda = new Image("Imagenes/ashEspadaDerecha.png");
+    Image ImagenPersonajeEspadaDerecha = new Image("Imagenes/ashEspadaIzquierda.png");
+    Image ImagenPersonajeEspadaArriba = new Image("Imagenes/ashEspadaArriba.png");
+    Image ImagenPersonajeEspadaAbajo = new Image("Imagenes/ashEspadaAbajo.png");
 
     Personaje personaje = new Personaje("Heroe", 100, 5000, 5, 10, 0, 1, "derecha", ImagenPersonajeArriba);
 
@@ -78,105 +85,135 @@ public class FXMLDocumentController implements Initializable {
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                     
+                    personaje.setDireccion("arriba");
+                    personaje.setUrl(ImagenPersonajeArriba);
+                    imagenPersonaje.setImage(personaje.getUrl());
                     posicionV = scrollPricnipal.getVvalue();
-                        if(y!=0)
-                    if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == posicionVacio) {
-                        y -= 1;    
-                        MatrizEstado.getInstance().actualizarPosicion(1, y, x);
-                        MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y + 1, x);
-                        empezarMovimientosZombies();
-                        empezarMovimientosChimeras();
-                       MatrizEstado.getInstance().mostrarMatrizConsola();
+                    if (y != 0) {
+                        if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == posicionVacio) {
+                            y -= 1;
+                            MatrizEstado.getInstance().actualizarPosicion(1, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y + 1, x);
+                            empezarMovimientosZombies();
+                            empezarMovimientosChimeras();
+                            MatrizEstado.getInstance().mostrarMatrizConsola();
 
-                        personaje.setDireccion("arriba");
-                        personaje.setUrl(ImagenPersonajeArriba);
-                        imagenPersonaje.setImage(personaje.getUrl());
-                        if (posY > 0) {
-                            posY -= tamañoImagenes;
-                            teclado.moverArriba(posY, imagenPersonaje);
+                            if (posY > 0) {
+                                posY -= tamañoImagenes;
+                                teclado.moverArriba(posY, imagenPersonaje);
+                            }
+
+                            scrollPricnipal.setVvalue(posicionV - tamañoDespalzamiento);
                         }
-
-                        scrollPricnipal.setVvalue(posicionV - tamañoDespalzamiento);
                     }
                     break;
                 case DOWN:
-                     posicionV = scrollPricnipal.getVvalue();
-                     if(y!=TamañoColumnaCueva-1)
-                    if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == posicionVacio) {
+                    personaje.setDireccion("abajo");
+                    personaje.setUrl(ImagenPersonajeAbajo);
+                    imagenPersonaje.setImage(personaje.getUrl());
+                    posicionV = scrollPricnipal.getVvalue();
+                    if (y != TamañoColumnaCueva - 1) {
+                        if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == posicionVacio) {
 
-                        y += 1;
-                        MatrizEstado.getInstance().actualizarPosicion(1, y, x);
-                        MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y - 1, x);
-                        empezarMovimientosChimeras();
-                        empezarMovimientosZombies();
-                        MatrizEstado.getInstance().mostrarMatrizConsola();
-                       
-
-                        personaje.setDireccion("abajo");
-                        personaje.setUrl(ImagenPersonajeAbajo);
-                        imagenPersonaje.setImage(personaje.getUrl());
-
-                        if (posY < (tamañoImagenes * (TamañoColumnaCueva - 1))) {
-                            posY += tamañoImagenes;
-                            teclado.moveraAbajo(posY, imagenPersonaje);
+                            y += 1;
+                            MatrizEstado.getInstance().actualizarPosicion(1, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y - 1, x);
+                            empezarMovimientosChimeras();
+                            empezarMovimientosZombies();
+                            MatrizEstado.getInstance().mostrarMatrizConsola();
+                            if (posY < (tamañoImagenes * (TamañoColumnaCueva - 1))) {
+                                posY += tamañoImagenes;
+                                teclado.moveraAbajo(posY, imagenPersonaje);
+                            }
+                            scrollPricnipal.setVvalue(posicionV + tamañoDespalzamiento);
                         }
-                        scrollPricnipal.setVvalue(posicionV + tamañoDespalzamiento);
                     }
                     break;
                 case LEFT:
-                     posicionH = scrollPricnipal.getHvalue();
-                     if(x!=0)
-                    if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == posicionVacio) {
-                        x -= 1;
-                        MatrizEstado.getInstance().actualizarPosicion(1, y, x);
-                       MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y, x + 1);
-                        empezarMovimientosZombies();
-                        empezarMovimientosChimeras();
-                       MatrizEstado.getInstance().mostrarMatrizConsola();
-                       
 
-                        personaje.setDireccion("izquierda");
-                        personaje.setUrl(ImagenPersonajeIzquierda);
-                        imagenPersonaje.setImage(personaje.getUrl());
+                    personaje.setDireccion("izquierda");
+                    personaje.setUrl(ImagenPersonajeIzquierda);
+                    imagenPersonaje.setImage(personaje.getUrl());
+                    posicionH = scrollPricnipal.getHvalue();
+                    if (x != 0) {
+                        if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == posicionVacio) {
+                            x -= 1;
+                            MatrizEstado.getInstance().actualizarPosicion(1, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y, x + 1);
+                            empezarMovimientosZombies();
+                            empezarMovimientosChimeras();
+                            MatrizEstado.getInstance().mostrarMatrizConsola();
 
-                        if (posX > 0) {
-                            posX -= tamañoImagenes;
-                            teclado.moverIzquierda(posX, imagenPersonaje);
+                            if (posX > 0) {
+                                posX -= tamañoImagenes;
+                                teclado.moverIzquierda(posX, imagenPersonaje);
+                            }
+                            scrollPricnipal.setHvalue(posicionH - tamañoDespalzamiento);
                         }
-                        scrollPricnipal.setHvalue(posicionH - tamañoDespalzamiento);
                     }
                     break;
                 case RIGHT:
-                   
-                     posicionH = scrollPricnipal.getHvalue();
-                     if(x!=TamañoColumnaCueva-1)
-                    if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == posicionVacio) {
-                        x += 1;
-                        MatrizEstado.getInstance().actualizarPosicion(1, y, x);
-                        MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y, x - 1);
-                        empezarMovimientosChimeras();
-                        empezarMovimientosZombies();
-                        MatrizEstado.getInstance().mostrarMatrizConsola();
-                        
+                    personaje.setDireccion("derecha");
+                    personaje.setUrl(ImagenPersonajeDerecha);
+                    imagenPersonaje.setImage(personaje.getUrl());
 
-                        personaje.setDireccion("derecha");
-                        personaje.setUrl(ImagenPersonajeDerecha);
-                        imagenPersonaje.setImage(personaje.getUrl());
-
-                        if (posX < (tamañoImagenes * (TamañoFilaCueva - 1))) {
-                            posX += tamañoImagenes;
-                            teclado.moverDerecha(posX, imagenPersonaje);
+                    posicionH = scrollPricnipal.getHvalue();
+                    if (x != TamañoColumnaCueva - 1) {
+                        if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == posicionVacio) {
+                            x += 1;
+                            MatrizEstado.getInstance().actualizarPosicion(1, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(posicionVacio, y, x - 1);
+                            empezarMovimientosChimeras();
+                            empezarMovimientosZombies();
+                            MatrizEstado.getInstance().mostrarMatrizConsola();
+                            if (posX < (tamañoImagenes * (TamañoFilaCueva - 1))) {
+                                posX += tamañoImagenes;
+                                teclado.moverDerecha(posX, imagenPersonaje);
+                            }
+                            scrollPricnipal.setHvalue(posicionH + tamañoDespalzamiento);
                         }
-                        scrollPricnipal.setHvalue(posicionH + tamañoDespalzamiento);
                     }
                     break;
                 case S:
                     if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
+                        if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 9) {
+                            MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
+                        }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
+                        if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 9) {
+                            MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
+                        }
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
+                        imagenPersonaje.setImage(ImagenPersonajePalaAbajo);
+                        if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 9) {
+                            MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
+                        }
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
+                        imagenPersonaje.setImage(ImagenPersonajePalaArriba);
+                        if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 9) {
+                            MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
+                        }
+                    }
+                    break;
+                case A:
+                    if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
+                        imagenPersonaje.setImage(ImagenPersonajeEspadaIzquierda);
+
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
+                        imagenPersonaje.setImage(ImagenPersonajeEspadaDerecha);
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
+                        imagenPersonaje.setImage(ImagenPersonajeEspadaAbajo);
+
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
+                        imagenPersonaje.setImage(ImagenPersonajeEspadaArriba);
                     }
                     break;
             }
@@ -198,20 +235,24 @@ public class FXMLDocumentController implements Initializable {
             }
         }
         gridCountainer.setMinSize(TamañoFilaCueva * tamañoImagenes, TamañoColumnaCueva * tamañoImagenes);
+
+        button.setDisable(true);
+
+        for (int i = 0; i < 1 + (Math.random() * 30); i++) {
+            imageViewAuxiliar = auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
+            if (imageViewAuxiliar != null) {
+                anchorCountainerMap.getChildren().add(imageViewAuxiliar);
+            }
+        }
         anchorCountainerMap.getChildren().addAll(imagenPersonaje);
         auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
-        button.setDisable(true);
         insertarZombies();
         insertarChimeras();
-        for (int i = 0; i < 1+ (Math.random() *30); i++) {
-           imageViewAuxiliar=auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
-            if(imageViewAuxiliar!=null)
-            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
-        }
-         MatrizEstado.getInstance().mostrarMatrizConsola();
-         empezarMovimientosZombies();
-         empezarMovimientosChimeras();
+        MatrizEstado.getInstance().mostrarMatrizConsola();
+        empezarMovimientosZombies();
+        empezarMovimientosChimeras();
     }
+
     public void insertarZombies() {
         ArrayZombie = auxiliar.crearZombie(tamañoImagenes, TamañoColumnaCueva);
         for (int i = 0; i < ArrayZombie.size(); i++) {
@@ -220,6 +261,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }//fin insertarZombies
+
     public void insertarChimeras() {
         ArrayChimera = auxiliar.crearChimera(tamañoImagenes, TamañoColumnaCueva);
         for (int i = 0; i < ArrayChimera.size(); i++) {
@@ -228,17 +270,18 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }//fin insertarChimeras
-    
+
     public void empezarMovimientosZombies() {
- 
+
         for (int i = 0; i < ArrayZombie.size(); i++) {
 
             ArrayZombie.get(i).run();
         }
 
     }
+
     public void empezarMovimientosChimeras() {
- 
+
         for (int i = 0; i < ArrayChimera.size(); i++) {
 
             ArrayChimera.get(i).run();
@@ -246,11 +289,10 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         teclas();
-        
+
     }
 
 }

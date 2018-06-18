@@ -141,7 +141,7 @@ public class Chimera implements Runnable{
                     if (y > 0) {
                         if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 0) {
                             y -= 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(3, y, x);
                             this.setPosicionX(y);
                             MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
                             MatrizEstado.getInstance().mostrarMatrizConsola();
@@ -158,7 +158,7 @@ public class Chimera implements Runnable{
                         if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 0) {
 
                             y += 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(3, y, x);
                             this.setPosicionX(y);
                             MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
                             MatrizEstado.getInstance().mostrarMatrizConsola();
@@ -175,7 +175,7 @@ public class Chimera implements Runnable{
                     if (x < MatrizEstado.getInstance().enviarTamaño() - 1) {
                         if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 0) {
                             x = x + 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(3, y, x);
                             this.setPosicionY(x);
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
                             MatrizEstado.getInstance().mostrarMatrizConsola();
@@ -191,7 +191,7 @@ public class Chimera implements Runnable{
                     if (x > 0) {
                         if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 0) {
                             x -= 1;
-                            MatrizEstado.getInstance().actualizarPosicion(2, y, x);
+                            MatrizEstado.getInstance().actualizarPosicion(3, y, x);
                             this.setPosicionY(x);
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
                             MatrizEstado.getInstance().mostrarMatrizConsola();
