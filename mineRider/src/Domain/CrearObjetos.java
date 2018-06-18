@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 public class CrearObjetos {
     ArrayList<Zombie> arrayZombies = new ArrayList<>();
     ArrayList<Chimera> arrayChimera = new ArrayList<>();
+    ArrayList<Piedras> arrayPiedras = new ArrayList<>();
     MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
     Coordenadas cordenadas;
@@ -79,27 +80,29 @@ public class CrearObjetos {
          return arrayChimera;
     }//fin arrayChimera
     
-     public ImageView crearPiedra(int tamañoImagenes, int tamañoColumna) {
-        ImageView imagenPiedra = new ImageView("Imagenes/images.jpg");
-        imagenPiedra.setFitHeight(tamañoImagenes);
-        imagenPiedra.setFitWidth(tamañoImagenes);
+     public ArrayList<Piedras> crearPiedra(int tamañoImagenes, int tamañoColumna) {
+         for (int i = 0; i < 2; i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
-        int b= (int) (Math.random() * tamañoColumna - 1);
+        int b=(int) (Math.random() * tamañoColumna - 1);
+          while(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){
+        a=(int) (Math.random() * tamañoColumna - 1);
+        b=(int) (Math.random() * tamañoColumna - 1);
+        }
         cordenadas = matriz[a][b];
-           if(a!=0 && b!=0){
-               if(MatrizEstado.getInstance().getMatriz()[a][b]==0){
-        MatrizEstado.getInstance().actualizarPosicion(9, a, b);
-//        matrix.mostrarMatrizConsola();
         int x = cordenadas.getX();
         int y = cordenadas.getY();
-
-       imagenPiedra.setLayoutX(x);
-        imagenPiedra.setLayoutY(y);
-
-        return imagenPiedra;
-               }}
-           return null;
-    }
-
+        MatrizEstado.getInstance().actualizarPosicion(9, a, b);
+        ImageView imagenPiedras= new ImageView("Imagenes/images.jpg");
+        imagenPiedras.setFitHeight(tamañoImagenes);
+        imagenPiedras.setFitWidth(tamañoImagenes);
+        imagenPiedras.setLayoutX(x);
+        imagenPiedras.setLayoutY(y);
+        Piedras piedras = new Piedras(imagenPiedras, i);
+       arrayPiedras.add(piedras);
+           }
+         return arrayPiedras;
      
+  
+     
+}
 }

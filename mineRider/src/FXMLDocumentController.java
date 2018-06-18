@@ -4,12 +4,14 @@ import Domain.Chimera;
 import Domain.CrearObjetos;
 import Domain.MatrizEstado;
 import Domain.Personaje;
+import Domain.Piedras;
 import Domain.Teclado;
 import Domain.Zombie;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -27,6 +29,7 @@ public class FXMLDocumentController implements Initializable {
 
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
     ArrayList<Chimera> ArrayChimera = new ArrayList<>();
+    ArrayList<Piedras> ArrayPiedras = new ArrayList<>();
 //    Archivos archivo = new Archivos();
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
 //    MatrizEstado matrixEstado = new MatrizEstado();
@@ -47,6 +50,8 @@ public class FXMLDocumentController implements Initializable {
     double posicionV;
     double posicionH;
     int posicionVacio = 0;
+    //Imagenes Piedras
+    ImageView imagentransparente = new ImageView("Imagenes/floor.jpg");
 
     //Imagenes Personaje
     //////////////////////////////////////////////////////////////
@@ -179,24 +184,28 @@ public class FXMLDocumentController implements Initializable {
                         imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
                         if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
+                             anchorCountainerMap.getChildren().remove(ArrayPiedras.get(1));
                         }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
                         if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
+                          anchorCountainerMap.getChildren().remove(ArrayPiedras.get(1));
                         }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaAbajo);
                         if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
+                           anchorCountainerMap.getChildren().remove(ArrayPiedras.get(0));
                         }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaArriba);
                         if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
+                          anchorCountainerMap.getChildren().remove(ArrayPiedras.get(0));
                         }
                     }
                     break;
@@ -238,19 +247,23 @@ public class FXMLDocumentController implements Initializable {
 
         button.setDisable(true);
 
-        for (int i = 0; i < 1 + (Math.random() * 30); i++) {
-            imageViewAuxiliar = auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
-            if (imageViewAuxiliar != null) {
-                anchorCountainerMap.getChildren().add(imageViewAuxiliar);
-            }
-        }
-        anchorCountainerMap.getChildren().addAll(imagenPersonaje);
-        auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
+        insertarPiedras();
         insertarZombies();
         insertarChimeras();
+        anchorCountainerMap.getChildren().addAll(imagenPersonaje);
+        auxiliar.PosicionInicial(tamañoImagenes, imagenPersonaje);
         MatrizEstado.getInstance().mostrarMatrizConsola();
         empezarMovimientosZombies();
         empezarMovimientosChimeras();
+    }
+
+    public void insertarPiedras() {
+        ArrayPiedras = auxiliar.crearPiedra(tamañoImagenes, TamañoColumnaCueva);
+        for (int i = 0; i < ArrayPiedras.size(); i++) {
+            imageViewAuxiliar = ArrayPiedras.get(i).getImagen();
+            anchorCountainerMap.getChildren().add(imageViewAuxiliar);
+        }
+
     }
 
     public void insertarZombies() {
