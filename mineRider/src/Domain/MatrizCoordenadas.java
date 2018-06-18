@@ -11,13 +11,6 @@ public class MatrizCoordenadas {
     private static MatrizCoordenadas instance;
     private Coordenadas matriz[][];
 
-    public static MatrizCoordenadas getInstance() {
-        if (instance == null) {
-            instance = new MatrizCoordenadas();
-        }
-        return instance;
-    }
-
     public MatrizCoordenadas() {
         
         this.matriz = new Coordenadas[20][20];

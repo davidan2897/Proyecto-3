@@ -1,7 +1,9 @@
 
 import Domain.Archivos;
 import Domain.Chimera;
+import Domain.Coordenadas;
 import Domain.CrearObjetos;
+import Domain.MatrizCoordenadas;
 import Domain.MatrizEstado;
 import Domain.Personaje;
 import Domain.Piedras;
@@ -26,7 +28,7 @@ import javafx.scene.layout.GridPane;
  * @author Davi
  */
 public class FXMLDocumentController implements Initializable {
-
+    MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
     ArrayList<Chimera> ArrayChimera = new ArrayList<>();
     ArrayList<Piedras> ArrayPiedras = new ArrayList<>();
@@ -34,10 +36,10 @@ public class FXMLDocumentController implements Initializable {
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
 //    MatrizEstado matrixEstado = new MatrizEstado();
 //   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 5;
+    int TamañoFilaCueva = 20;
 //            Integer.parseInt((String) tamaño.get(0));      
 //                 
-    int TamañoColumnaCueva = 5;
+    int TamañoColumnaCueva = 20;
 //            Integer.parseInt((String) tamaño.get(1));    
     //          
     CrearObjetos auxiliar = new CrearObjetos();
@@ -51,7 +53,7 @@ public class FXMLDocumentController implements Initializable {
     double posicionH;
     int posicionVacio = 0;
     //Imagenes Piedras
-    ImageView imagentransparente = new ImageView("Imagenes/floor.jpg");
+    ImageView imagenFloor = new ImageView("Imagenes/floor.jpg");
 
     //Imagenes Personaje
     //////////////////////////////////////////////////////////////
@@ -85,7 +87,7 @@ public class FXMLDocumentController implements Initializable {
 
     //movimiento Personaje
     public void teclas() {
-
+       Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
         Teclado teclado = new Teclado();
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
@@ -184,28 +186,25 @@ public class FXMLDocumentController implements Initializable {
                         imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
                         if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
-                             anchorCountainerMap.getChildren().remove(ArrayPiedras.get(1));
                         }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
                         if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
-                          anchorCountainerMap.getChildren().remove(ArrayPiedras.get(1));
+
                         }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaAbajo);
                         if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
-                           anchorCountainerMap.getChildren().remove(ArrayPiedras.get(0));
                         }
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaArriba);
                         if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
-                          anchorCountainerMap.getChildren().remove(ArrayPiedras.get(0));
                         }
                     }
                     break;
