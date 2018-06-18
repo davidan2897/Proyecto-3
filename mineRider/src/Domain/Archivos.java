@@ -117,7 +117,7 @@ public Zombie leerJsonZombie(){
             
              
 
-           Zombie zombies=new Zombie(nombre, 0, 0, Integer.parseInt((String) Ataque), Integer.parseInt((String)defensa), (Double.parseDouble((String)retraso)), Integer.parseInt ((String)alcance),"0", imagenZombie);
+           Zombie zombies=new Zombie(nombre, 0, 0, Integer.parseInt((String) Ataque), Integer.parseInt((String)defensa), (Double.parseDouble((String)retraso)), Integer.parseInt ((String)alcance),"Izquierda", imagenZombie);
              return zombies;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -158,7 +158,7 @@ public Chimera leerJsonChimera(){
             System.out.println(alcance);
             
              
-            Chimera chimera=new Chimera(nombre, 0, 0, Integer.parseInt((String)shortAttack), Integer.parseInt((String)longAttack),Integer.parseInt((String)defensa) ,Integer.parseInt((String)retraso) , Integer.parseInt((String)alcance), "0", imagenChimera);
+            Chimera chimera=new Chimera(nombre, 0, 0, Integer.parseInt((String)shortAttack), Integer.parseInt((String)longAttack),Integer.parseInt((String)defensa) ,Integer.parseInt((String)retraso) , Integer.parseInt((String)alcance), "Izquierda", imagenChimera);
              return chimera;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

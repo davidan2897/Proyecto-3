@@ -19,6 +19,7 @@ public class CrearObjetos {
     MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
     Coordenadas cordenadas;
+     Archivos archivo =new Archivos();
 //    MatrizEstado matrix= new MatrizEstado();
 
     public void PosicionInicial(int tamañoImagenes, ImageView imagenPersonaje) {
@@ -51,7 +52,14 @@ public class CrearObjetos {
             imagenZombie.setFitWidth(tamañoImagenes);
             imagenZombie.setLayoutX(x);
             imagenZombie.setLayoutY(y);
-            Zombie zombie = new Zombie("zombie"+(i), a, b, a, a, a, a, "izquierda", imagenZombie);
+          // Zombie zombie = new Zombie("zombie"+(i), a, b, a, a, a, a, "izquierda", imagenZombie);
+       
+        Zombie zombie=archivo.leerJsonZombie();
+        zombie.setPosicionX(a);
+        zombie.setPosicionY(b);
+        zombie.setNombre("zombie"+i);
+        zombie.setImagen(imagenZombie);
+        
             arrayZombies.add(zombie);
         }
          return arrayZombies;
@@ -75,6 +83,11 @@ public class CrearObjetos {
         imagenChimera.setLayoutX(x);
         imagenChimera.setLayoutY(y);
         Chimera chimera = new Chimera("chimera"+(i), a, b,0,0, 0, 0, 0, "", imagenChimera);
+     //   Chimera chimera=archivo.leerJsonChimera();
+        chimera.setPosicionX(a);
+        chimera.setPosicionY(b);
+        chimera.setNombre("chimera"+i);
+        chimera.setImagen(imagenChimera);
         arrayChimera.add(chimera);
            }
          return arrayChimera;
