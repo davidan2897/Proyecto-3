@@ -71,6 +71,10 @@ public class FXMLDocumentController implements Initializable {
     Image ImagenPersonajeEspadaDerecha = new Image("Imagenes/ashEspadaIzquierda.png");
     Image ImagenPersonajeEspadaArriba = new Image("Imagenes/ashEspadaArriba.png");
     Image ImagenPersonajeEspadaAbajo = new Image("Imagenes/ashEspadaAbajo.png");
+    Image ImagenPersonajeLatigoIzquierda = new Image("Imagenes/ashLatigoDerecha.png");
+    Image ImagenPersonajeLatigoDerecha = new Image("Imagenes/ashLatigoIzquierda.png");
+    Image ImagenPersonajeLatigoArriba = new Image("Imagenes/ashLatigoArriba.png");
+    Image ImagenPersonajeLatigoAbajo = new Image("Imagenes/ashLatigoAbajo.png");
 
     Personaje personaje = new Personaje("Heroe", 100, 5000, 5, 10, 0, 1, "derecha", ImagenPersonajeArriba);
 
@@ -181,7 +185,7 @@ public class FXMLDocumentController implements Initializable {
                         }
                     }
                     break;
-                case S:
+                case D:
                     if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
                         if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 9) {
@@ -224,10 +228,27 @@ public class FXMLDocumentController implements Initializable {
                         imagenPersonaje.setImage(ImagenPersonajeEspadaArriba);
                     }
                     break;
+            
+                case S:
+                    if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
+                        imagenPersonaje.setImage(ImagenPersonajeLatigoIzquierda);
+
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
+                        imagenPersonaje.setImage(ImagenPersonajeLatigoDerecha);
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
+                        imagenPersonaje.setImage(ImagenPersonajeLatigoAbajo);
+
+                    }
+                    if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
+                        imagenPersonaje.setImage(ImagenPersonajeLatigoArriba);
+                    }
+                    break;
+            
             }
-
         });
-
+      
     }
 
     //Posiciones iniciales
