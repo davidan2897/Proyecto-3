@@ -12,7 +12,6 @@ public class MatrizCoordenadas {
     ArrayList tamaño = archivo.leerJson();
     int TamañoFilaCueva = Integer.parseInt((String) tamaño.get(0));                
     int TamañoColumnaCueva = Integer.parseInt((String) tamaño.get(1)); 
-    private static MatrizCoordenadas instance;
     private Coordenadas matriz[][];
 
     public MatrizCoordenadas() {
