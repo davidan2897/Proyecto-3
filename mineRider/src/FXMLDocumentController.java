@@ -17,6 +17,7 @@ import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,9 +33,9 @@ public class FXMLDocumentController implements Initializable {
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
     ArrayList<Chimera> ArrayChimera = new ArrayList<>();
     ArrayList<Piedras> ArrayPiedras = new ArrayList<>();
-//    Archivos archivo = new Archivos();
+    Archivos archivo = new Archivos();
     ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
-//    MatrizEstado matrixEstado = new MatrizEstado();
+
 //   ArrayList tamaño = archivo.leerJson();
     int TamañoFilaCueva = 20;
 //            Integer.parseInt((String) tamaño.get(0));      
@@ -88,6 +89,8 @@ public class FXMLDocumentController implements Initializable {
     private GridPane gridCountainer;
     @FXML
     private ScrollPane scrollPricnipal;
+    @FXML
+    private Label arma;
 
     //movimiento Personaje
     public void teclas() {
@@ -96,6 +99,7 @@ public class FXMLDocumentController implements Initializable {
         anchor.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
+                    arma.setText("");
                     personaje.setDireccion("arriba");
                     personaje.setUrl(ImagenPersonajeArriba);
                     imagenPersonaje.setImage(personaje.getUrl());
@@ -119,6 +123,7 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case DOWN:
+                    arma.setText("");
                     personaje.setDireccion("abajo");
                     personaje.setUrl(ImagenPersonajeAbajo);
                     imagenPersonaje.setImage(personaje.getUrl());
@@ -141,7 +146,7 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case LEFT:
-
+                    arma.setText("");
                     personaje.setDireccion("izquierda");
                     personaje.setUrl(ImagenPersonajeIzquierda);
                     imagenPersonaje.setImage(personaje.getUrl());
@@ -164,6 +169,7 @@ public class FXMLDocumentController implements Initializable {
                     }
                     break;
                 case RIGHT:
+                    arma.setText("");
                     personaje.setDireccion("derecha");
                     personaje.setUrl(ImagenPersonajeDerecha);
                     imagenPersonaje.setImage(personaje.getUrl());
@@ -188,61 +194,74 @@ public class FXMLDocumentController implements Initializable {
                 case D:
                     if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaIzquierda);
+                        if (x != TamañoColumnaCueva - 1){
                         if (MatrizEstado.getInstance().getMatriz()[y][x + 1] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x + 1);
-                        }
+                        }}
+                         arma.setText("Pala");
                     }
+                     
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaDerecha);
+                        if (x != 0){
                         if (MatrizEstado.getInstance().getMatriz()[y][x - 1] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y, x - 1);
-
-                        }
+                        }}
+                        arma.setText("Pala");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaAbajo);
+                          if (y != TamañoColumnaCueva - 1) {
                         if (MatrizEstado.getInstance().getMatriz()[y + 1][x] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y + 1, x);
-                        }
+                        }}
+                     arma.setText("Pala");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
                         imagenPersonaje.setImage(ImagenPersonajePalaArriba);
+                        if (y != 0){
                         if (MatrizEstado.getInstance().getMatriz()[y - 1][x] == 9) {
                             MatrizEstado.getInstance().actualizarPosicion(0, y - 1, x);
-                        }
+                        }}
+                     arma.setText("Pala");
                     }
                     break;
                 case A:
                     if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
                         imagenPersonaje.setImage(ImagenPersonajeEspadaIzquierda);
-
+                         arma.setText("Espada");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
                         imagenPersonaje.setImage(ImagenPersonajeEspadaDerecha);
+                         arma.setText("Espada");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
                         imagenPersonaje.setImage(ImagenPersonajeEspadaAbajo);
-
+                        arma.setText("Espada");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
                         imagenPersonaje.setImage(ImagenPersonajeEspadaArriba);
+                        arma.setText("Espada");
                     }
                     break;
             
                 case S:
                     if (personaje.getDireccion().equalsIgnoreCase("Derecha")) {
                         imagenPersonaje.setImage(ImagenPersonajeLatigoIzquierda);
+                        arma.setText("Latigo");
 
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("izquierda")) {
                         imagenPersonaje.setImage(ImagenPersonajeLatigoDerecha);
+                        arma.setText("Latigo");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("abajo")) {
                         imagenPersonaje.setImage(ImagenPersonajeLatigoAbajo);
-
+                    arma.setText("Latigo");
                     }
                     if (personaje.getDireccion().equalsIgnoreCase("arriba")) {
                         imagenPersonaje.setImage(ImagenPersonajeLatigoArriba);
+                        arma.setText("Latigo");
                     }
                     break;
             
