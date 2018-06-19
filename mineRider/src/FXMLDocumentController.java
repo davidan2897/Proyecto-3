@@ -34,15 +34,13 @@ public class FXMLDocumentController implements Initializable {
     ArrayList<Chimera> ArrayChimera = new ArrayList<>();
     ArrayList<Piedras> ArrayPiedras = new ArrayList<>();
     Archivos archivo = new Archivos();
-    ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
+    ArrayList tamaño = archivo.leerJson();
+    
 
-//   ArrayList tamaño = archivo.leerJson();
-    int TamañoFilaCueva = 20;
-//            Integer.parseInt((String) tamaño.get(0));      
-//                 
-    int TamañoColumnaCueva = 20;
-//            Integer.parseInt((String) tamaño.get(1));    
-    //          
+
+    int TamañoFilaCueva = Integer.parseInt((String) tamaño.get(0));                
+    int TamañoColumnaCueva = Integer.parseInt((String) tamaño.get(1));             
+    ImageView imagenChimera = new ImageView("Imagenes/charmander.gif");
     CrearObjetos auxiliar = new CrearObjetos();
     int tamañoImagenes = 100;
     double tamañoDespalzamiento = 0.06;
