@@ -92,6 +92,14 @@ public class FXMLDocumentController implements Initializable {
 
     //movimiento Personaje
     public void teclas() {
+        if(TamañoColumnaCueva<=20){
+         tamañoDespalzamiento=0.08;
+        }
+        if(TamañoColumnaCueva<=15){
+        tamañoDespalzamiento=0.15;
+        }
+        if(TamañoColumnaCueva<=6){
+           tamañoDespalzamiento=1.0;}       
        Coordenadas matriz[][] = matrizCoordenadas.enviaMatriz(matrizCoordenadas.enviarCoordenadas());
         Teclado teclado = new Teclado();
         anchor.setOnKeyPressed(e -> {
