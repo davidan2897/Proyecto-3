@@ -28,7 +28,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author Davi
  */
-public class Controlador implements Initializable {
+public class FXMLDocumentController implements Initializable {
     MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
     ArrayList<Chimera> ArrayChimera = new ArrayList<>();
