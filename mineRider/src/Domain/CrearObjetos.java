@@ -36,7 +36,7 @@ public class CrearObjetos {
     }
 
     public ArrayList<Zombie> crearZombie(int tamañoImagenes, int tamañoColumna) {
-        for (int i = 0; i <(1)+(Math.random() * 20); i++) {
+        for (int i = 0; i <(1)+(Math.random() * tamañoColumna*3); i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
 
@@ -67,7 +67,7 @@ public class CrearObjetos {
     }
 
     public  ArrayList<Chimera> crearChimera(int tamañoImagenes, int tamañoColumna) {
-        for (int i = 0; i <(1)+(Math.random() * 15); i++) {
+        for (int i = 0; i <(1)+(Math.random() * tamañoColumna*2); i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
           while(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){
@@ -95,7 +95,7 @@ public class CrearObjetos {
     }//fin arrayChimera
     
      public ArrayList<Piedras> crearPiedra(int tamañoImagenes, int tamañoColumna) {
-         for (int i = 0; i < (10)+(Math.random() * 30); i++) {
+         for (int i = 0; i < (2)+(Math.random() * tamañoColumna); i++) {
         int a=(int) (Math.random() * tamañoColumna - 1);
         int b=(int) (Math.random() * tamañoColumna - 1);
           while(MatrizEstado.getInstance().getMatriz()[a][b]!=0 || a==0 && b==0){

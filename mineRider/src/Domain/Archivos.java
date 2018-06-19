@@ -24,7 +24,7 @@ public ArrayList leerJson(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\David\\Respaldos\\Proyecto-3\\mineRider\\prueba.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\NetBeansProjects\\Programacion II\\Proyecto 3\\Proyecto-3\\mineRider\\cueva.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
