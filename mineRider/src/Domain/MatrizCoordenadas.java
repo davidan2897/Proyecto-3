@@ -2,18 +2,22 @@ package Domain;
 
 
 
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 
 
 public class MatrizCoordenadas {
-    
+    Archivos archivo = new Archivos();
+    ArrayList tamaño = archivo.leerJson();
+    int TamañoFilaCueva = Integer.parseInt((String) tamaño.get(0));                
+    int TamañoColumnaCueva = Integer.parseInt((String) tamaño.get(1)); 
     private static MatrizCoordenadas instance;
     private Coordenadas matriz[][];
 
     public MatrizCoordenadas() {
         
-        this.matriz = new Coordenadas[20][20];
+        this.matriz = new Coordenadas[TamañoColumnaCueva][TamañoFilaCueva];
     }
 
     public String enviarCoordenadas() {

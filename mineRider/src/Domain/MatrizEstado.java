@@ -1,7 +1,13 @@
 package Domain;
 
+import java.util.ArrayList;
+
 
 public class MatrizEstado {
+     Archivos archivo = new Archivos();
+    ArrayList tamaño = archivo.leerJson();
+    int TamañoFilaCueva = Integer.parseInt((String) tamaño.get(0));                
+    int TamañoColumnaCueva = Integer.parseInt((String) tamaño.get(1)); 
     private static MatrizEstado instance;
     private int matriz[][];
 
@@ -21,7 +27,7 @@ public class MatrizEstado {
     }
        
     public MatrizEstado(){
-        this.matriz = new int[20][20];
+        this.matriz = new int[TamañoColumnaCueva][TamañoFilaCueva];
     }
     
     public void actualizarPosicion(int elemento, int posicionX, int posicionY){
@@ -39,7 +45,7 @@ public class MatrizEstado {
         System.out.println(valores);
     }
     public int enviarTamaño(){
-        return 20;
+        return TamañoColumnaCueva;
         
     }
 }
