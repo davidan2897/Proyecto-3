@@ -28,7 +28,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author Davi
  */
-public class FXMLDocumentController implements Initializable {
+public class Controlador implements Initializable {
     MatrizCoordenadas matrizCoordenadas = new MatrizCoordenadas();
     ArrayList<Zombie> ArrayZombie = new ArrayList<>();
     ArrayList<Chimera> ArrayChimera = new ArrayList<>();
@@ -92,7 +92,7 @@ public class FXMLDocumentController implements Initializable {
 
     //movimiento Personaje
     public void teclas() {
-        if(TamañoColumnaCueva<=20){
+        if(TamañoColumnaCueva<20){
          tamañoDespalzamiento=0.08;
         }
         if(TamañoColumnaCueva<=15){
