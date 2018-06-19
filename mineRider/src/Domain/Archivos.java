@@ -24,7 +24,7 @@ public ArrayList leerJson(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Desktop\\Nueva carpeta (2)\\prueba.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\David\\Respaldos\\Proyecto-3\\mineRider\\prueba.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -70,7 +70,7 @@ public void escribir(){
 
  
 
-            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\chimera.json");
+            FileWriter jsonFileWriter = new FileWriter("C:\\Users\\Berny\\Documents\\David\\Respaldos\\Proyecto-3\\mineRider\\chimera.json");
 
             jsonFileWriter.write(jsonObject.toJSONString());
 
@@ -96,7 +96,7 @@ public Zombie leerJsonZombie(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\zombie.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\David\\Respaldos\\Proyecto-3\\mineRider\\zombie.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
@@ -135,7 +135,7 @@ public Chimera leerJsonChimera(){
         JSONParser parser = new JSONParser();
 
         try {     
-            Object obj = parser.parse(new FileReader("C:\\Users\\UsuarioPC\\Desktop\\proyectopppp - copia\\Proyecto-3\\mineRider\\chimera.json"));
+            Object obj = parser.parse(new FileReader("C:\\Users\\Berny\\Documents\\David\\Respaldos\\Proyecto-3\\mineRider\\chimera.json"));
 
             JSONObject jsonObject =  (JSONObject) obj;
 
